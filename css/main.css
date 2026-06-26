@@ -1,19 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-body{
+*,
+*::before,
+*::after{
     margin:0;
-    font-family: 'Poppins', sans-serif;
-    background: #FFF;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#fff;
+    color:#333;
+    line-height:1.6;
+}
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#fff;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.topnav{
+    max-width:1200px;
+    margin:0 auto;
+
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:2rem;
+
+    list-style:none;
+    padding:1rem 2rem;
+}
+
+.topnav a{
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+    transition:color .25s ease;
+}
+
+.topnav a:hover{
+    color:#FD6F00;
+}
+
+.topnav a.active{
+    color:#FD6F00;
+    font-weight:600;
 }
 
 .hero{
-    display: flex;
-    padding: 80px 10%;
-    min-height: 80vh;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    gap: 4rem;
+    max-width:1200px;
+    margin:0 auto;
+    height: 80vh;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:4rem;
+
+    min-height:80vh;
+    padding:80px 2rem;
 }
 
 .hero-content{
@@ -22,26 +72,26 @@ body{
 
 .hero h1{
     color:#FD6F00;
-    font-size:2rem;
-    margin:0 0 .5rem 0;
+    font-size:clamp(2rem,5vw,4rem);
+    margin-bottom:.5rem;
 }
 
 .hero h2{
-    font-size:1.5rem;
+    font-size:clamp(1.4rem,2vw,2rem);
     font-weight:500;
-    margin:0 0 1rem 0;
+    margin-bottom:1rem;
 }
 
 .hero h3{
     font-size:1rem;
-    margin:0 0 .5rem 0;
+    margin-bottom:.5rem;
 }
 
 .hero p{
-    max-width:650px;
+    max-width:600px;
     line-height:1.5;
     color:#555;
-    margin:0;
+    margin-bottom:2rem;
 }
 
 .hero p.description{
@@ -50,51 +100,66 @@ body{
 
 .hero button{
     padding:14px 36px;
-    background:#FD6F00;
-    color:white;
     border:none;
     border-radius:8px;
+    background:#FD6F00;
+    color:#fff;
+    font-size:1rem;
     cursor:pointer;
-    transition: 0.2s ease;
+    transition:.25s ease;
 }
 
 .hero button:hover{
     background:#e85f00;
-    transform: translateY(-2px);
+    transform:translateY(-2px);
 }
 
 .hero-image{
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    flex:1;
+    display:flex;
+    justify-content:center;
 }
 
 .hero-image img{
-    width: 100%;
-    max-width: 400px;
-    height: auto;
+    width:100%;
+    max-width:400px;
+    height:auto;
     object-fit: cover;
 }
 
 .about{
-    padding: 80px 10%;
-    min-height: 80vh;
+    max-width:1200px;
+    margin:0 auto;
+    padding:80px 2rem;
 }
 
-/* .navbar{
+@media (max-width:768px){
 
-} */
-
-@media (max-width: 768px) {
-    .hero {
-        flex-direction: column-reverse;
-        padding: 40px 5%;
-        text-align: center;
-        gap: 2rem;
+    .topnav{
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:1rem;
+        padding:1rem;
     }
-    
-    .hero-image img {
-        max-width: 280px;
+
+    .hero{
+        flex-direction:column-reverse;
+        text-align:center;
+        padding:40px 1rem;
+        gap:2rem;
+    }
+
+    .hero-content{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .hero p{
+        max-width:100%;
+    }
+
+    .hero-image img{
+        max-width:280px;
     }
 }
