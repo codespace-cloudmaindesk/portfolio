@@ -77,6 +77,15 @@ body{
     object-fit: cover;
 }
 
+.about{
+    padding: 80px 10%;
+    min-height: 80vh;
+}
+
+/* .navbar{
+
+} */
+
 @media (max-width: 768px) {
     .hero {
         flex-direction: column-reverse;
