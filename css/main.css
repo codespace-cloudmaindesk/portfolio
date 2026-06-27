@@ -139,17 +139,27 @@ body{
 
 .hero-name{
     color:var(--primary);
-    font-size:clamp(2.5rem,6vw,4.5rem);
+    font-size:clamp(1.5rem,4vw,2.5rem);
     line-height:1.1;
     margin-bottom:.5rem;
 
 }
 
-.job-title{
+.hero-role{
+    display:flex;
+    align-items:center;
+    gap:.15rem;
+    min-height:2.5rem;
     font-size:clamp(1.4rem,2vw,2rem);
-    font-weight:500;
+    font-weight:400;
+    color:var(--text);
     margin-bottom:1.5rem;
+}
 
+.role-cursor{
+    color:var(--primary);
+    font-weight:700;
+    animation:blink .8s steps(1) infinite;
 }
 
 .description{
@@ -202,6 +212,11 @@ body{
 
 }
 
+@keyframes blink{
+    0%, 50%{ opacity:1;}
+    50.01%, 100%{ opacity:0;}
+}
+
 @media (max-width:768px){
     .nav-list{
         justify-content:center;
@@ -227,10 +242,11 @@ body{
     }
     .hero-image img{
         max-width:300px;
-
     }
     .hero-actions{
         justify-content:center;
-
+    }
+    .hero-role{
+        justify-content:center;
     }
 }

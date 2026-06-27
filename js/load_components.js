@@ -1,3 +1,5 @@
+import { typeWriter } from "./modules/typewriter.js";
+
 document.addEventListener("DOMContentLoaded", async () => {
 
     async function loadComponent(id, file) {
@@ -13,9 +15,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const results = await Promise.allSettled([
-        loadComponent("navbar", "components/navigation.html")
+        loadComponent("navbar", "components/navigation.html"),
+        typeWriter("typed-role", "assets/data/roles.json")
     ]);
-
     console.log(results);
-
 });
