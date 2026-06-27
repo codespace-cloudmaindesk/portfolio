@@ -1,4 +1,5 @@
 import { typeWriter } from "./modules/typewriter.js";
+import { loadAbout } from "./modules/about.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -13,10 +14,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             return { id, status: "failed", error };
         }
     }
-
+    await loadComponent("navbar", "components/navigation.html");
+    
     const results = await Promise.allSettled([
-        loadComponent("navbar", "components/navigation.html"),
-        typeWriter("typed-role", "assets/data/roles.json")
+        typeWriter("typed-role", "assets/data/roles.json"),
+        loadAbout("about-title", "about-content", "assets/data/about.json")
     ]);
     console.log(results);
 });

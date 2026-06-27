@@ -37,6 +37,13 @@ body{
     width:min(100% - 2rem,var(--container));
     margin-inline:auto;
 }
+main{
+    padding-top:80px;
+}
+
+#navbar{
+    min-height:80px;
+}
 
 .navbar{
 
@@ -96,7 +103,6 @@ body{
     align-items:center;
     justify-content:space-between;
     gap:4rem;
-
 }
 
 .hero-content{

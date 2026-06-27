@@ -1,8 +1,6 @@
 export async function typeWriter(id, file) {
 
     try {
-        console.log("TypeWriter started");
-
         const response = await fetch(file);
         const roles = await response.json();
 
