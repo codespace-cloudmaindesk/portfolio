@@ -53,10 +53,6 @@ body {
   margin-inline: auto;
 }
 
-main {
-  padding-top: var(--nav-height);
-}
-
 #navbar {
   position:sticky;
   top:0;
