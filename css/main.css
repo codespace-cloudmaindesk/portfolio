@@ -231,42 +231,6 @@ main {
   transform:translateY(-2px);
 }
 
-.about {
-  max-width:800px;
-  margin-inline:auto;
-  padding:var(--sp-xl) var(--sp-sm);
-}
-
-.about h1 {
-  font-size:clamp(1.8rem, 3vw, 2.5rem);
-  color:var(--clr-primary);
-  margin-bottom:var(--sp-lg);
-  padding-bottom:var(--sp-sm);
-  position:relative;
-}
-
-.about h1::after {
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:0;
-  width:48px;
-  height:3px;
-  background:var(--clr-primary);
-  border-radius:var(--radius-pill);
-}
-
-.about p {
-  color:var(--clr-text-muted);
-  font-size:1.05rem;
-  line-height:1.8;
-  margin-bottom:var(--sp-md);
-}
-
-.about p:last-child {
-  margin-bottom: 0;
-}
-
 @keyframes blink {
   0%, 50% { opacity: 1; }
   50.01%, 100% { opacity: 0; }
