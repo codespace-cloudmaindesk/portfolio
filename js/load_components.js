@@ -21,7 +21,7 @@ async function loadComponent(id, file) {
  async function initFeatures() {
     return Promise.allSettled([
         typeWriter("typed-role", "assets/data/roles.json"),
-        loadAbout("about-title", "about-content", "assets/data/about.json")
+        loadAbout("about-title", "about-content", "about-skills", "assets/data/about.json")
     ]);
 }
 

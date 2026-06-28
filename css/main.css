@@ -11,6 +11,7 @@
   --clr-bg:#fff;
   --clr-border:#e8e8e8;
   --clr-nav-bg:rgba(255, 255, 255, 0.95);
+  --clr--box-shadow: rgba(253, 111, 0, 0.35);
 
   --container-max:1200px;
   --nav-height:80px;
@@ -25,27 +26,30 @@
   --radius-card:0.75rem;
   --shadow-sm:0 2px 8px  rgba(0, 0, 0, 0.06);
   --shadow-md:0 4px 20px rgba(0, 0, 0, 0.10);
+  
   --transition:0.25s ease;
+  --easing-smooth:cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-pop: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 *,
 *::before,
 *::after {
-  margin:     0;
-  padding:    0;
-  box-sizing: border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior:smooth;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  color:        var(--clr-text);
-  background:   var(--clr-bg);
-  line-height:  1.6;
-  overflow-x:   hidden;
+  font-family:"Poppins", sans-serif;
+  color:var(--clr-text);
+  background:var(--clr-bg);
+  line-height: 1.6;
+  overflow-x:hidden;
 }
 
 .container {
@@ -63,7 +67,7 @@ body {
 .navbar {
   background:var(--clr-nav-bg);
   backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(0, 0, 0, 0.05);
+  border-bottom:1px solid var(--clr-border);
 }
 
 .nav-list {
@@ -91,7 +95,7 @@ body {
   width:0;
   height:2px;
   background:var(--clr-primary);
-  transition:width var(--transition);
+  transition: width var(--transition);
 }
 
 .nav-list a:is(:hover, .active) {
@@ -109,10 +113,10 @@ body {
 }
 
 .hero {
-  min-height:calc(100vh - var(--nav-height));
   display:flex;
   align-items:center;
   justify-content:space-between;
+  min-height:calc(100vh - var(--nav-height));
   gap:var(--sp-xl);
 }
 
@@ -138,7 +142,7 @@ body {
   display:flex;
   align-items:center;
   gap:0.75rem;
-  font-size:0.85rem;
+  font-size:0.95rem;
   color:var(--clr-text-subtle);
   margin-bottom:var(--sp-xs);
 }
@@ -188,15 +192,15 @@ body {
 }
 
 .btn {
-  padding:0.95rem 2rem;
-  border-radius:var(--radius-pill);
-  font:600 0.95rem "Poppins", sans-serif;
-  cursor:pointer;
-  transition:
-    background var(--transition),
-    border-color var(--transition),
-    color var(--transition),
-    transform var(--transition);
+    padding:0.95rem 2rem;
+    border-radius:var(--radius-pill);
+    font:600 0.95rem "Poppins", sans-serif;
+    cursor:pointer;
+    transition:
+      background var(--transition),
+      border-color var(--transition),
+      color var(--transition),
+      transform var(--transition);
 }
 
 .btn:focus-visible {
@@ -206,7 +210,7 @@ body {
 
 .btn-primary {
   background: var(--clr-primary);
-  color:#fff;
+  color:var(--clr-bg);
   border:none;
 }
 
@@ -227,6 +231,123 @@ body {
   transform:translateY(-2px);
 }
 
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--sp-xl);
+    min-height:calc(100vh - var(--nav-height));
+    padding: var(--sp-xl) 0;
+}
+
+.about-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.about-image img {
+    position: relative;
+    z-index: 1;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.about-image::before {
+  content:"";
+  position:absolute;
+  width: 300px;
+  height: 300px;
+  border-radius:50%;
+  background: var(--clr-border);
+  z-index:0;
+}
+
+.about-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-md);
+}
+ 
+.about-info h1 {
+    font-size: clamp(2rem, 3.5vw, 2.5rem);
+    font-weight: 600;
+    color: var(--clr-text-muted);
+    margin-bottom: var(--sp-xs);
+    line-height: 1.1;
+    padding-bottom: var(--sp-xs);
+    position: relative;
+}
+
+.about-info h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  height: 3px;
+  background: var(--clr-primary);
+  border-radius: var(--radius-pill);
+}
+
+#about-content p {
+    color: var(--clr-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: var(--sp-sm);
+}
+ 
+#about-content p:last-child {
+    margin-bottom: 0;
+}
+ 
+.skills {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-sm);
+}
+ 
+.skill-name {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--clr-text-muted);
+    margin-bottom: 0.4rem;
+}
+ 
+.skill-bar {
+    height: 8px;
+    background: var(--clr-bg);
+    border-radius: var(--radius-pill);
+    overflow: visible;
+}
+ 
+.skill-fill {
+    position: relative;
+    height: 100%;
+    width: 0;
+    border-radius: var(--radius-pill);
+    background: var(--clr-primary);
+    transition: width 1s var(--easing-smooth);
+}
+ 
+.skill-fill::after {
+    content: "";
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--clr-primary);
+    border: 3px solid var(--clr-nav-bg);
+    box-shadow: 0 2px 6px var(--clr--box-shadow);
+}
+ 
 @keyframes blink {
   0%, 50% { opacity: 1; }
   50.01%, 100% { opacity: 0; }
@@ -235,24 +356,24 @@ body {
 @media (max-width: 768px) {
   .nav-list {
     display: none;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:var(--sp-sm);
-    padding:var(--sp-sm) 0;
-    min-height:auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--sp-sm);
+    padding: var(--sp-sm) 0;
+    min-height: auto;
   }
 
   .hero {
-    flex-direction:column-reverse;
-    text-align:center;
-    padding:3rem 0;
-    gap:var(--sp-lg);
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 3rem 0;
+    gap: var(--sp-lg);
   }
 
   .hero-content {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero-image img {
@@ -262,5 +383,30 @@ body {
   .hero-actions,
   .hero-role {
     justify-content: center;
+  }
+
+  .about {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--sp-lg);
+    padding: var(--sp-lg) var(--sp-sm);
+  }
+
+  .about-image { 
+    order: -1; 
+  }
+
+  .about-image::before {
+    width:  260px;
+    height: 260px;
+  }
+
+  .about-image img {
+    width:  220px;
+    height: 220px;
+  }
+ 
+  .skill-name { 
+    text-align: left; 
   }
 }
