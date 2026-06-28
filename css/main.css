@@ -192,6 +192,7 @@ body {
 }
 
 .btn {
+    text-decoration: none;
     padding:0.95rem 2rem;
     border-radius:var(--radius-pill);
     font:600 0.95rem "Poppins", sans-serif;
@@ -222,7 +223,7 @@ body {
 .btn-secondary {
   background:transparent;
   border:1px solid var(--clr-border);
-  color:var(--clr-text);
+  color:var(--clr-text-muted);
 }
 
 .btn-secondary:hover {
