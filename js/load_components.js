@@ -28,9 +28,12 @@ async function loadComponent(id, file) {
 async function bootstrapApp() {
     try {
         await loadComponent("navbar", "components/navigation.html");
-
+        
+        requestAnimationFrame(async () => {
+            
         const results = await initFeatures();
         console.log("[APP INIT]", results);
+        });
 
     } catch (error) {
         console.error("[BOOTSTRAP FAILED]", error);
