@@ -39,7 +39,7 @@ function renderSkills(skillsId) {
  
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-            skillsEl.querySelectorAll(".skill-fill").forEach(bar => {
+            skillsEl.querySelectorAll(".skill-progress-fill").forEach(bar => {
                 bar.style.width = bar.dataset.level + "%";
             });
         });
