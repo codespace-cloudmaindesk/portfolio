@@ -1,4 +1,8 @@
 package com.cloudstudio.portfolio.service;
 
-public class ProjectService {
+import com.cloudstudio.portfolio.entity.Project;
+import java.util.List;
+
+public interface ProjectService{
+    List<Project> getAllProjects();
 }

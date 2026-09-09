@@ -1,4 +1,7 @@
 package com.cloudstudio.portfolio.repository;
 
-public class ProjectRepository {
+import com.cloudstudio.portfolio.entity.Project;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ProjectRepository extends JpaRepository<Project, Long> {
 }
