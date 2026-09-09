@@ -1,9 +1,21 @@
 package com.cloudstudio.portfolio.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "project")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Project {
 
     @Id
@@ -13,17 +25,36 @@ public class Project {
     @Column(name = "title")
     private String title;
 
-    public String getTitle(){
-        return title;
-    }
-    public void setTitle(String title){
-        this.title = title;
-    }
+    @Column(name = "short_description")
+    private String shortDescription;
 
-    public Long getId(){
-        return id;
-    }
-    public void setId(Long id){
-        this.id = id;
-    }
+    @Column(name = "problem")
+    private String problem;
+
+    @Column(name = "solution")
+    private String solution;
+
+    @ElementCollection
+    @CollectionTable(name = "project_technologies", joinColumns = @JoinColumn(name = "project_id"))
+    @Column(name = "technology")
+    private List<String> technologies = new ArrayList<>();
+
+    @Column(name = "github_url")
+    private String githubUrl;
+
+    @Column(name = "demo_url")
+    private String demoUrl;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private ProjectStatus status;
+
+    @Column(name = "featured")
+    private boolean featured;
+
+    @Setter(AccessLevel.NONE)
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+
 }
