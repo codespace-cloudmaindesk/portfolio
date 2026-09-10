@@ -55,6 +55,4 @@ public class Project {
     @Setter(AccessLevel.NONE)
     @CreationTimestamp
     private LocalDateTime createdAt;
-
-
 }
