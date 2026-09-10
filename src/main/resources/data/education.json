@@ -1,0 +1,18 @@
+{
+  "education": [
+    {
+      "qualification": "BCom in Accounting",
+      "institution": "University of Johannesburg",
+      "period": "2021 - 2023",
+      "level": "NQF 7",
+      "status": "Completed"
+    },
+    {
+      "qualification": "Diploma in Software Engineering",
+      "institution": "WeThinkCode_",
+      "period": "2024 - 2025",
+      "level": "NQF 6",
+      "status": "Completed"
+    }
+  ]
+}

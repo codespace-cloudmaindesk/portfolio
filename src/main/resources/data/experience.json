@@ -1,0 +1,18 @@
+{
+  "experience": [
+    {
+      "role": "Audit Administrator",
+      "company": "Morobi Chartered Accountants",
+      "period": "2025 - 2026",
+      "location": "Johannesburg, South Africa",
+      "type": "Contract",
+      "description": "Supported audit and verification activities for the UIF TERS Verification Project.",
+      "responsibilities": [
+        "Performed client existence and compliance checks.",
+        "Conducted employee interviews and verified supporting information.",
+        "Analysed payments using Excel PivotTables, SUMIFS, VLOOKUP and XLOOKUP.",
+        "Prepared audit reports and communicated discrepancies with clients."
+      ]
+    }
+  ]
+}

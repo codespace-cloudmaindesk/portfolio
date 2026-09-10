@@ -1,0 +1,20 @@
+{
+  "certifications": [
+    {
+      "name": "SAP Certified – Implementation Consultant – End-to-End Business Processes for SAP Business Suite",
+      "issuer": "SAP",
+      "issuedDate": "2026-08-01",
+      "expirationDate": "2027-08-01",
+      "credentialId": "C_IEE2E",
+      "credentialUrl": "https://www.credly.com/..."
+    },
+    {
+      "name": "SAP Certified – SAP Generative AI Developer",
+      "issuer": "SAP",
+      "issuedDate": "2026-08-01",
+      "expirationDate": "2027-08-01",
+      "credentialId": "C_AIG",
+      "credentialUrl": "https://www.credly.com/..."
+    }
+  ]
+}

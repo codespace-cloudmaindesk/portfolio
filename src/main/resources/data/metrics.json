@@ -1,0 +1,19 @@
+{
+  "metrics": [
+    {
+      "target": 4,
+      "suffix": "+",
+      "label": "Projects Completed"
+    },
+    {
+      "target": 3,
+      "suffix": "+",
+      "label": "Dashboards Built"
+    },
+    {
+      "target": 4,
+      "suffix": "",
+      "label": "SAP Business Processes"
+    }
+  ]
+}
