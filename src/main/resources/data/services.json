@@ -1,5 +1,0 @@
-[
-  { "icon": "ti-chart-bar", "title": "Data Analysis & Reporting", "description": "Turning raw datasets into clear, decision-ready reports using SQL and Python." },
-  { "icon": "ti-database", "title": "Data Pipeline Automation", "description": "Building automated ETL pipelines that keep dashboards and reports up to date without manual work." },
-  { "icon": "ti-chart-dots", "title": "BI Dashboard Development", "description": "Designing interactive dashboards in Power BI and Tableau tailored to business KPIs." }
-]
