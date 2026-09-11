@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class SocialLinks {
+public class SocialLink {
     private String icon;
     private String label;
     private String url;
