@@ -1,0 +1,23 @@
+{
+  "professionalDevelopment": [
+    {
+      "program": "SAP Young Professionals Program",
+      "provider": "SAP",
+      "period": "2026",
+      "status": "Completed",
+      "value": ["Built practical understanding of SAP S/4HANA, cloud ERP and end-to-end business processes."],
+      "impact": ["Improved ability to understand business requirements and connect them to integrated SAP processes."]
+    },
+    {
+      "program": "Dale Carnegie Training",
+      "provider": "Dale Carnegie",
+      "period": "2026",
+      "status": "Completed",
+      "value": ["Developed communication, collaboration and leadership capabilities."],
+      "impact": [
+        "Improved ability to communicate clearly",
+        "Collaborate with teams and engage stakeholders professionally."
+      ]
+    }
+  ]
+}
