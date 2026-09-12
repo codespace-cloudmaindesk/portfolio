@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skills | Portfolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
     <link rel="stylesheet" th:href="@{/css/base.css}" />
     <link rel="stylesheet" th:href="@{/css/layout.css}" />
     <link rel="stylesheet" th:href="@{/css/components.css}" />
 </head>
 <body>
+
+<div th:replace="~{fragments :: nav}"></div>
 
 <div class="container section">
     <h2 class="section-heading">Skills</h2>
@@ -22,6 +24,9 @@
         </li>
     </ul>
 </div>
+
+<div th:replace="~{fragments :: footer}"></div>
+
 
 </body>
 </html>

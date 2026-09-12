@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<nav th:fragment="nav" class="main-nav">
+    <div class="container nav-container">
+        <div class="logo">Tumiso<span class="logo-span">.</span></div>
+        <ul class="nav-links">
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/about}">About</a></li>
+            <li><a th:href="@{/skills}">Skills</a></li>
+            <li><a th:href="@{/projects}">Projects</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<footer th:fragment="footer" class="site-footer">
+    <div class="container footer-grid">
+        <div>
+            <div class="logo">Tumiso<span class="logo-span">.</span></div>
+            <p class="footer-tagline">Turning Business Challenges into Technology Solutions.</p>
+        </div>
+        <div>
+            <h4 class="footer-heading">Connect</h4>
+            <ul class="footer-social">
+                <li th:each="link : ${socialLinks}">
+                    <a th:href="${link.url}" th:title="${link.label}">
+                        <i th:class="'ti ' + ${link.icon}"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container footer-bottom">
+        <p class="footer-copy">&copy; 2026 Tumiso Dinkoanyane</p>
+    </div>
+</footer>
+
+</body>
+</html>

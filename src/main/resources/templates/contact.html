@@ -1,31 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Contact</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/layout.css}" />
+    <link rel="stylesheet" th:href="@{/css/components.css}" />
 </head>
 <body>
 
-<h1>Contact Me</h1>
+<div th:replace="~{fragments :: nav}"></div>
 
-<p th:if="${successMessage}" th:text="${successMessage}"></p>
+<div class="container section">
 
-<form th:action="@{/contact}" th:object="${contactMessageDto}" method="post">
+    <h1>Contact Me</h1>
 
-    <label>Name:</label>
-    <input type="text" th:field="*{name}" />
-    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+    <p th:if="${successMessage}" th:text="${successMessage}"></p>
 
-    <label>Email:</label>
-    <input type="text" th:field="*{email}" />
-    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+    <form th:action="@{/contact}" th:object="${contactMessageDto}" method="post">
 
-    <label>Message:</label>
-    <textarea th:field="*{message}"></textarea>
-    <p th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></p>
+        <label>Name:</label>
+        <input type="text" th:field="*{name}" />
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
 
-    <button type="submit">Send</button>
+        <label>Email:</label>
+        <input type="text" th:field="*{email}" />
+        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
 
-</form>
+        <label>Message:</label>
+        <textarea th:field="*{message}"></textarea>
+        <p th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></p>
+
+        <button type="submit">Send</button>
+
+    </form>
+
+</div>
+
+<div th:replace="~{fragments :: footer}"></div>
 
 </body>
 </html>
