@@ -251,7 +251,10 @@
 
 /* --- Footer --- */
 .site-footer {
+    margin-top: auto;
     padding-top: var(--sp-xl);
+    border-top: 1px solid var(--clr-border);
+
 }
 
 .footer-grid {
@@ -397,6 +400,9 @@
 
     .footer-links-list {
         align-items: center;
+    }
+    .footer-social {
+        justify-content: center;
     }
 
     .footer-bottom {
