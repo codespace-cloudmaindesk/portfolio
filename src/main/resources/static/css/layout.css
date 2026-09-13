@@ -3,12 +3,6 @@
     margin-inline: auto;
 }
 
-#navigation-placeholder {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
 .main-nav {
     background: var(--clr-nav-bg);
     backdrop-filter: blur(12px);
@@ -17,12 +11,6 @@
             box-shadow var(--transition),
             background var(--transition),
             border-color var(--transition);
-}
-
-.main-nav.scrolled {
-    background: var(--box-sh-bg);
-    border-bottom-color: var(--box-sh-border-bottom-clr);
-    box-shadow: var(--shadow-sm);
 }
 
 .nav-container {
@@ -49,15 +37,6 @@
     background: var(--gradient-primary);
     background-clip: text;
     color: transparent;
-}
-
-.nav-toggle {
-    display: none;
-    font-size: 2.2rem;
-    color: var(--clr-text-muted);
-    background: transparent;
-    border: none;
-    cursor: pointer;
 }
 
 .nav-links {
@@ -111,59 +90,6 @@
 }
 
 @media (max-width: 768px) {
-    .nav-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-    }
-
-    .hamburger {
-        position: relative;
-        width: 24px;
-        height: 2px;
-        background: var(--clr-text);
-        transition: background var(--transition);
-    }
-
-    .hamburger::before,
-    .hamburger::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        width: 24px;
-        height: 2px;
-        background: var(--clr-text);
-        transition:
-                transform var(--transition),
-                top var(--transition),
-                bottom var(--transition);
-    }
-
-    .hamburger::before { top: -8px; }
-    .hamburger::after { bottom: -8px; }
-
-    .nav-toggle.active .hamburger { background: transparent; }
-    .nav-toggle.active .hamburger::before { transform: rotate(45deg); top: 0; }
-    .nav-toggle.active .hamburger::after { transform: rotate(-45deg); bottom: 0; }
-
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--clr-nav-bg);
-        border-bottom: 1px solid var(--clr-border);
-        padding: var(--sp-md) 0;
-        box-shadow: var(--shadow-md);
-        backdrop-filter: blur(12px);
-    }
-
-    .nav-menu.active {
-        display: block;
-    }
 
     .nav-links {
         flex-direction: column;
