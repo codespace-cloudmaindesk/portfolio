@@ -3,19 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tumiso Dinkoanyane — Data Engineer, BI Developer, and Business Analyst. Bridging business needs with technical solutions.">
     <title>Home | Tumiso Dinkoanyane</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
     <link rel="stylesheet" th:href="@{/css/base.css}" />
     <link rel="stylesheet" th:href="@{/css/layout.css}" />
     <link rel="stylesheet" th:href="@{/css/components.css}" />
+    <link rel="stylesheet" th:href="@{/css/pages/hero.css}" />
 </head>
 <body>
 
 <div th:replace="~{fragments :: nav}"></div>
 
-<div class="container section">
-    <h1>In dev</h1>
-</div>
+<main>
+    <section class="container section hero" aria-label="Hero">
+        <div class="split-grid">
+
+            <div class="hero-content">
+                <p class="hero-eyebrow"><span class="eyebrow-dash"></span> Hi, I'm</p>
+                <h1 class="hero-name">Tumiso<br>Dinkoanyane</h1>
+
+                <!-- Role: server-rendered from roles.json via Thymeleaf -->
+                <p class="hero-role"
+                   th:text="${roles != null and not #lists.isEmpty(roles) ? roles[0] : 'Data Engineer'}"></p>
+
+                <p class="hero-bio" th:text="${about.content[0]}"></p>
+                <div class="hero-actions">
+                    <a class="btn btn-primary" th:href="@{/projects}" id="btn-view-portfolio">View Portfolio</a>
+                    <a class="btn btn-secondary" th:href="@{/contact}" id="btn-contact-me">Contact Me</a>
+                </div>
+            </div>
+
+            <div class="hero-visual" role="presentation" aria-hidden="true">
+                <div class="hero-circle hero-circle-bg"></div>
+                <div class="hero-circle hero-circle-top">
+                    <i class="ti ti-users"></i>
+                </div>
+                <div class="hero-circle hero-circle-left">
+                    <i class="ti ti-chart-bar"></i>
+                </div>
+                <div class="hero-circle hero-circle-right">
+                    <i class="ti ti-topology-star-3"></i>
+                </div>
+                <!-- Image served from /images/ (static/images/hero_profile.png) -->
+                <img class="hero-photo"
+                     th:src="@{/images/hero_profile.png}"
+                     alt="Tumiso Dinkoanyane — profile photo" />
+            </div>
+
+        </div>
+    </section>
+</main>
 
 <div th:replace="~{fragments :: footer}"></div>
 
