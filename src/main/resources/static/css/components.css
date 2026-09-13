@@ -127,40 +127,6 @@
     box-shadow: 0 2px 6px var(--shadow-glow-primary);
 }
 
-.section-heading {
-    padding-bottom: var(--sp-xs);
-    font-weight: 600;
-    background: var(--clr-primary);
-    background-clip: text;
-    color: transparent;
-}
-
-.profile-image {
-    position: relative;
-    display: grid;
-    place-items: center;
-}
-
-.profile-image img {
-    position: relative;
-    z-index: 1;
-    width: min(300px, 100%);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: top;
-    transition: var(--easing-in-out);
-}
-
-.profile-image::before {
-    content: "";
-    position: absolute;
-    width: min(300px, 100%);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: var(--clr-border);
-}
-
 /* --- Cards (services, projects) --- */
 .card-grid {
     display: grid;
@@ -202,19 +168,6 @@
     box-shadow: var(--shadow-md);
 }
 
-.card-image {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-    border-radius: var(--radius-card);
-    background: var(--clr-bg);
-}
-
-.card-icon {
-    font-size: 2rem;
-    color: var(--clr-primary);
-}
-
 .card-title {
     font-size: 1.1rem;
     font-weight: 600;
@@ -234,11 +187,6 @@
     margin-top: auto;
 }
 
-.section-subtitle {
-    max-width: 640px;
-    margin-bottom: var(--sp-lg);
-    color: var(--clr-text-muted);
-}
 
 .section-heading {
     padding-bottom: var(--sp-xs);
@@ -251,10 +199,7 @@
 
 /* --- Footer --- */
 .site-footer {
-    margin-top: auto;
     padding-top: var(--sp-xl);
-    border-top: 1px solid var(--clr-border);
-
 }
 
 .footer-grid {
@@ -278,28 +223,6 @@
     color: var(--clr-text-muted);
 }
 
-.footer-links-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    list-style: none;
-}
-
-.footer-link {
-    font-size: 0.9rem;
-    color: var(--clr-text-subtle);
-    transition: color var(--transition);
-}
-
-.footer-link:hover {
-    color: var(--clr-primary);
-}
-
-.footer-link:focus-visible {
-    outline: 2px solid var(--clr-primary);
-    outline-offset: 3px;
-    border-radius: 2px;
-}
 
 .footer-social {
     display: flex;
@@ -396,13 +319,6 @@
     .footer-tagline {
         max-width: none;
         margin-inline: auto;
-    }
-
-    .footer-links-list {
-        align-items: center;
-    }
-    .footer-social {
-        justify-content: center;
     }
 
     .footer-bottom {
