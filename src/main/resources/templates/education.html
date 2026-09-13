@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education | Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/layout.css}" />
+    <link rel="stylesheet" th:href="@{/css/components.css}" />
+</head>
+<body>
+
+<div th:replace="~{fragments :: nav}"></div>
+
+<div class="container section">
+    <h2 class="section-heading">Education</h2>
+    <div class="card-grid">
+        <div class="card" th:each="edu : ${education}">
+            <h3 class="card-title" th:text="${edu.qualification}"></h3>
+            <p class="card-description" th:text="${edu.institution}"></p>
+            <p class="card-description" th:text="${edu.period}"></p>
+            <p class="card-description" th:text="'NQF Level ' + ${edu.level}"></p>
+            <p class="card-description" th:text="${edu.status}"></p>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments :: footer}"></div>
+
+</body>
+</html>
