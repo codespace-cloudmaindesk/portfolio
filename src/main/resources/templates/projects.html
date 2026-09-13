@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/layout.css}" />
+    <link rel="stylesheet" th:href="@{/css/components.css}" />
+</head>
+<body>
+
+<div th:replace="~{fragments :: nav}"></div>
+
+<div class="container section">
+    <h2 class="section-heading">Projects</h2>
+    <div class="card-grid">
+        <div class="card" th:each="project : ${projects}">
+            <h3 class="card-title" th:text="${project.title}"></h3>
+            <p class="card-description" th:text="${project.shortDescription}"></p>
+
+            <p class="card-description" th:text="'Problem: ' + ${project.problem}"></p>
+            <p class="card-description" th:text="'Solution: ' + ${project.solution}"></p>
+
+            <h3 class="card-title">Tech Stack</h3>
+            <ul class="card-description">
+                <li th:each="tech : ${project.technologies}" th:text="${tech}"></li>
+            </ul>
+
+            <p class="card-description" th:text="'Status: ' + ${project.status.displayName}"></p>
+
+            <div class="card-links">
+                <a class="btn btn-secondary" th:if="${project.githubUrl}" th:href="${project.githubUrl}" target="_blank">GitHub</a>
+                <a class="btn btn-primary" th:if="${project.demoUrl}" th:href="${project.demoUrl}" target="_blank">Live Demo</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments :: footer}"></div>
+
+</body>
+</html>

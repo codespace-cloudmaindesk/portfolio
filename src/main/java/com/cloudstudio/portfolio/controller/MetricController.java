@@ -14,9 +14,9 @@ public class MetricController {
         this.metricService = metricService;
     }
 
-    @GetMapping("/metric")
+    @GetMapping("/metrics")
     public String viewMetric(Model model) {
-        model.addAttribute("metric", metricService.getAllMetrics());
-        return "metric";
+        model.addAttribute("metrics", metricService.getAllMetrics());
+        return "metrics";
     }
 }

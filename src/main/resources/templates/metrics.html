@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metrics | Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+    <link rel="stylesheet" th:href="@{/css/base.css}" />
+    <link rel="stylesheet" th:href="@{/css/layout.css}" />
+    <link rel="stylesheet" th:href="@{/css/components.css}" />
+</head>
+<body>
+
+<div th:replace="~{fragments :: nav}"></div>
+
+<div class="container section">
+    <h2 class="section-heading">Metrics</h2>
+    <ul class="kpi-grid">
+        <li class="kpi-card" th:each="mtr : ${metrics}">
+            <span class="kpi-value" th:text="${mtr.target} + ${mtr.suffix}"></span>
+            <span class="kpi-label" th:text="${mtr.label}"></span>
+        </li>
+    </ul>
+</div>
+
+<div th:replace="~{fragments :: footer}"></div>
+
+</body>
+</html>

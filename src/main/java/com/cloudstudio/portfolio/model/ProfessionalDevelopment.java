@@ -12,7 +12,7 @@ import java.util.List;
 public class ProfessionalDevelopment {
     private String program;
     private String provider;
-    private String period;
+    private String duration;
     private String status;
     private List<String> value;
     private List<String> impact;

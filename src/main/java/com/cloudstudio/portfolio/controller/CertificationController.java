@@ -14,9 +14,9 @@ public class CertificationController {
         this.certificationService = certificationService;
     }
 
-    @GetMapping("/certification")
+    @GetMapping("/certifications")
     public String viewCertification(Model model) {
-        model.addAttribute("certification",certificationService.getAllCertification());
-        return "certification";
+        model.addAttribute("certifications",certificationService.getAllCertification());
+        return "certifications";
     }
 }

@@ -3,6 +3,7 @@ package com.cloudstudio.portfolio.service;
 import com.cloudstudio.portfolio.entity.Project;
 import com.cloudstudio.portfolio.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,7 +17,10 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Project> getAllProjects() {
-        return projectRepository.findAll();
+        List<Project> projects = projectRepository.findAll();
+        projects.forEach(project -> project.getTechnologies().size());
+        return projects;
     }
 }
