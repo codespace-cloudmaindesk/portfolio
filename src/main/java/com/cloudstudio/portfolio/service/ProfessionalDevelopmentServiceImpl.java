@@ -1,5 +1,6 @@
 package com.cloudstudio.portfolio.service;
 
+import com.cloudstudio.portfolio.exception.DataLoadException;
 import com.cloudstudio.portfolio.model.ProfessionalDevelopment;
 import com.cloudstudio.portfolio.model.ProfessionalDevelopmentResponse;
 import org.springframework.core.io.ClassPathResource;
@@ -12,17 +13,22 @@ import java.util.List;
 @Service
 public class ProfessionalDevelopmentServiceImpl implements ProfessionalDevelopmentService{
 
+    private final JsonMapper jsonMapper;
+
+    public ProfessionalDevelopmentServiceImpl(JsonMapper jsonMapper) {
+        this.jsonMapper = jsonMapper;
+    }
+
     @Override
     public List<ProfessionalDevelopment> getAllProfessionalDevelopment() {
         try {
-            JsonMapper mapper = new JsonMapper();
-            ProfessionalDevelopmentResponse response = mapper.readValue(
+            ProfessionalDevelopmentResponse response = jsonMapper.readValue(
                     new ClassPathResource("data/professionalDevelopment.json").getInputStream(),
                     ProfessionalDevelopmentResponse.class
             );
             return response.getProfessionalDevelopment();
         } catch (IOException e) {
-            throw new RuntimeException("Failed to load professionalDevelopment.json", e);
+            throw new DataLoadException("Failed to load professionalDevelopment.json", e);
         }
     }
 }
