@@ -1,5 +1,6 @@
 package com.cloudstudio.portfolio.service;
 
+import com.cloudstudio.portfolio.exception.DataLoadException;
 import com.cloudstudio.portfolio.model.Metric;
 import com.cloudstudio.portfolio.model.MetricResponse;
 import org.springframework.core.io.ClassPathResource;
@@ -12,17 +13,22 @@ import java.util.List;
 @Service
 public class MetricServiceImpl implements MetricService {
 
+    private final JsonMapper jsonMapper;
+
+    public MetricServiceImpl(JsonMapper jsonMapper) {
+        this.jsonMapper = jsonMapper;
+    }
+
     @Override
     public List<Metric> getAllMetrics() {
         try {
-            JsonMapper mapper = new JsonMapper();
-            MetricResponse response = mapper.readValue(
+            MetricResponse response = jsonMapper.readValue(
                     new ClassPathResource("data/metrics.json").getInputStream(),
                     MetricResponse.class
             );
             return response.getMetrics();
         } catch (IOException e) {
-            throw new RuntimeException("Failed to load metrics.json", e);
+            throw new DataLoadException("Failed to load metrics.json", e);
         }
     }
 }
