@@ -1,0 +1,125 @@
+/* --- Hero --- */
+.hero {
+    padding-top: var(--sp-xl);
+    padding-bottom: var(--sp-xl);
+}
+
+.hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-xs);
+    color: var(--clr-text-subtle);
+    font-size: 0.9rem;
+    margin-bottom: var(--sp-xs);
+}
+
+.eyebrow-dash {
+    display: inline-block;
+    width: 24px;
+    height: 2px;
+    background: var(--clr-primary);
+}
+
+.hero-name {
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.15;
+    color: var(--clr-primary);
+    margin-bottom: var(--sp-sm);
+}
+
+.hero-role {
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    font-weight: 600;
+    color: var(--clr-text);
+    min-height: 2.2rem;
+    margin-bottom: var(--sp-md);
+}
+
+.hero-bio {
+    max-width: 480px;
+    color: var(--clr-text-muted);
+    margin-bottom: var(--sp-lg);
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--sp-sm);
+    flex-wrap: wrap;
+}
+
+.hero-visual {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 380px;
+}
+
+.hero-circle {
+    position: absolute;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.hero-circle-bg {
+    width: 320px;
+    height: 320px;
+    background: var(--clr-border);
+    z-index: 0;
+}
+
+.hero-circle-top {
+    width: 160px;
+    height: 160px;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f5b942;
+    z-index: 1;
+}
+
+.hero-circle-left {
+    width: 170px;
+    height: 170px;
+    bottom: 40px;
+    left: 10px;
+    background: #7d9c8f;
+    z-index: 1;
+}
+
+.hero-circle-right {
+    width: 170px;
+    height: 170px;
+    bottom: 40px;
+    right: 10px;
+    background: #3f5e56;
+    z-index: 1;
+}
+
+.hero-circle i {
+    font-size: 1.8rem;
+    color: var(--clr-bg);
+}
+
+.hero-photo {
+    position: relative;
+    z-index: 2;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+}
+
+@media (max-width: 768px) {
+    .hero-visual {
+        min-height: 300px;
+        margin-top: var(--sp-lg);
+    }
+
+    .hero-circle-bg { width: 240px; height: 240px; }
+    .hero-circle-top { width: 120px; height: 120px; }
+    .hero-circle-left, .hero-circle-right { width: 130px; height: 130px; }
+    .hero-photo { width: 170px; height: 170px; }
+}
