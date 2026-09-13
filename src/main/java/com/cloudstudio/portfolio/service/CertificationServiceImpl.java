@@ -1,5 +1,6 @@
 package com.cloudstudio.portfolio.service;
 
+import com.cloudstudio.portfolio.exception.DataLoadException;
 import com.cloudstudio.portfolio.model.Certification;
 import com.cloudstudio.portfolio.model.CertificationResponse;
 import org.springframework.core.io.ClassPathResource;
@@ -12,17 +13,22 @@ import java.util.List;
 @Service
 public class CertificationServiceImpl implements CertificationService{
 
+    private final JsonMapper jsonMapper;
+
+    public CertificationServiceImpl(JsonMapper jsonMapper) {
+        this.jsonMapper = jsonMapper;
+    }
+
     @Override
     public List<Certification> getAllCertification() {
         try {
-            JsonMapper mapper = new JsonMapper();
-            CertificationResponse response = mapper.readValue(
+            CertificationResponse response = jsonMapper.readValue(
                     new ClassPathResource("data/certifications.json").getInputStream(),
                     CertificationResponse.class
             );
             return response.getCertifications();
         } catch (IOException e) {
-            throw new RuntimeException("Failed to load certifications.json", e);
+            throw new DataLoadException("Failed to load certifications.json", e);
         }
     }
 }
