@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import tools.jackson.databind.json.JsonMapper;
 
 import java.io.IOException;
-import java.util.zip.DataFormatException;
 
 @Service
 public class AboutServiceImpl implements AboutService {
