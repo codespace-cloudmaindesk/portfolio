@@ -27,7 +27,7 @@
                 <p class="hero-role"
                    th:text="${roles != null and not #lists.isEmpty(roles) ? roles[0] : 'Data Engineer'}"></p>
 
-                <p class="hero-bio" th:text="${about.content[0]}"></p>
+                <p class="hero-bio" th:text="${about.overview[0]}"></p>
                 <div class="hero-actions">
                     <a class="btn btn-primary" th:href="@{/projects}" id="btn-view-portfolio">View Portfolio</a>
                     <a class="btn btn-secondary" th:href="@{/contact}" id="btn-contact-me">Contact Me</a>

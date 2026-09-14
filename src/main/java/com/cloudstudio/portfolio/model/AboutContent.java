@@ -11,5 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 public class AboutContent {
     private String title;
-    private List<String> content;
+    private List<String> overview;
+    private List<String> description;
 }

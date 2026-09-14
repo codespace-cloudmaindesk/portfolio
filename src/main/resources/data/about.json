@@ -1,6 +1,9 @@
 {
   "title": "About Me",
-  "content": [
-    "I hold a BCom in Accounting and a Diploma in Software Engineering, combining financial knowledge with software engineering skills to bridge business needs with technical solutions. I apply analytical thinking to understand business processes and translate requirements into structured, scalable data solutions."
+  "overview": [
+    "I sit at the intersection of Accounting, Data, and Technology, using technical skills to improve business processes, reporting, and decision-making."
+  ],
+  "description": [
+    "I hold a BCom in Accounting and a Diploma in Software Engineering, combining financial knowledge with technical skills to understand business processes and solve data-related challenges. I apply analytical thinking to translate business requirements into practical solutions using SQL, Python, and Power BI."
   ]
 }
