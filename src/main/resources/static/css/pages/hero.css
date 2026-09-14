@@ -34,7 +34,23 @@
     color: var(--clr-text);
     min-height: 2.2rem;
     margin-bottom: var(--sp-md);
+    display: inline-flex;
+    align-items: center;
 }
+
+.hero-role::after {
+    content: '|';
+    margin-left: 2px;
+    color: var(--clr-primary);
+    font-weight: 300;
+    animation: cursor-blink 0.75s step-end infinite;
+}
+
+@keyframes cursor-blink {
+    0%,  100% { opacity: 1; }
+    50%        { opacity: 0; }
+}
+
 
 .hero-bio {
     max-width: 480px;

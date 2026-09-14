@@ -23,7 +23,7 @@
                 <p class="hero-eyebrow"><span class="eyebrow-dash"></span> Hi, I'm</p>
                 <h1 class="hero-name">Tumiso<br>Dinkoanyane</h1>
 
-                <p class="hero-role" id="hero-role" th:attr="data-roles=${#strings.listJoin(roles, '|')}"></p>
+                <p class="hero-role" id="hero-role" th:attr="data-roles=${#strings.listJoin(roles, roleSeparator)}"></p>
 
                 <p class="hero-bio" th:text="${about.overview[0]}"></p>
                 <div class="hero-actions">

@@ -96,6 +96,7 @@
         gap: var(--sp-md);
         min-height: auto;
     }
+    
 
     .split-grid {
         grid-template-columns: 1fr;

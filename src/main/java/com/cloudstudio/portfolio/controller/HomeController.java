@@ -5,8 +5,10 @@ import com.cloudstudio.portfolio.service.RoleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/")
 public class HomeController {
 
     private final RoleService roleService;
@@ -17,10 +19,11 @@ public class HomeController {
         this.aboutService = aboutService;
     }
 
-    @GetMapping("/")
+    @GetMapping
     public String viewHomePage(Model model) {
         model.addAttribute("roles", roleService.getAllRoles());
         model.addAttribute("about", aboutService.getAboutContent());
+        model.addAttribute("roleSeparator", "|");
         return "home";
     }
 }

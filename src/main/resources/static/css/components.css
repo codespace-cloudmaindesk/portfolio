@@ -267,6 +267,12 @@
     border-radius: 2px;
 }
 
+.footer-back-to-top {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: var(--sp-sm);
+}
+
 .footer-bottom {
     display: flex;
     align-items: center;
@@ -298,8 +304,8 @@
 .back-to-top {
     display: grid;
     place-items: center;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border: 1px solid var(--clr-border);
     border-radius: 50%;
     background: transparent;
@@ -358,5 +364,18 @@
 
     .footer-bottom {
         flex-direction: column;
+    }
+    .footer-back-to-top {
+        padding-bottom: var(--sp-xs);
+    }
+    .back-to-top {
+        width: 24px;
+        height: 24px;
+    }
+    .footer-bottom-right {
+        gap: var(--sp-xs);
+    }
+    .footer-rights {
+        font-size: 0.75rem;
     }
 }
