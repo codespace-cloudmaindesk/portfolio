@@ -3,9 +3,16 @@
     var toggle;
     var menu;
 
-    function onHamburgerClick() {
+    function onHamburgerClick(e) {
+        e.stopPropagation();
         var isOpen = menu.classList.toggle('active');
         toggle.classList.toggle('active', isOpen);
+    }
+
+    function onHamburgerTouch(e) {
+        // Prevent the 300ms click delay on mobile
+        e.preventDefault();
+        onHamburgerClick(e);
     }
 
     function closeMenu() {
@@ -18,8 +25,8 @@
     }
 
     function onDocClick(e) {
-        var clickedInsideMenu   = menu.contains(e.target);
-        var clickedOnToggle     = toggle.contains(e.target);
+        var clickedInsideMenu = menu.contains(e.target);
+        var clickedOnToggle   = toggle.contains(e.target);
         if (!clickedInsideMenu && !clickedOnToggle) closeMenu();
     }
 
@@ -28,13 +35,15 @@
         menu   = document.querySelector('.nav-menu');
         if (!toggle || !menu) return;
 
+        // touchstart fires before click – eliminates 300ms tap delay on mobile
+        toggle.addEventListener('touchstart', onHamburgerTouch, { passive: false });
         toggle.addEventListener('click', onHamburgerClick);
+
         menu.querySelectorAll('a').forEach(bindLinkClose);
         document.addEventListener('click', onDocClick);
     }
 
-    window.__appInits = window.__appInits || [];
-    window.__appInits.push(initNav);
+    // Script is embedded inside the nav fragment — DOM is already ready, init immediately.
+    initNav();
 
 })();
-

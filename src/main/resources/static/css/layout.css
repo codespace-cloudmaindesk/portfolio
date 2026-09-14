@@ -5,6 +5,7 @@
 
 .main-nav {
     position: relative;
+    z-index: 1000;
     background: var(--clr-nav-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--clr-border);
@@ -53,6 +54,15 @@
     background: transparent;
     border: none;
     cursor: pointer;
+    /* Reliable mobile tap target */
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    touch-action: manipulation;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 1001;
 }
 .nav-links {
     display: flex;
