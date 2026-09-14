@@ -1,49 +1,60 @@
 (function () {
-    function getNextState(state, textLength) {
-        const { roleIndex, charIndex, isDeleting } = state;
-        const next = { ...state };
-        let delay;
+    var CONFIG = {
+        typingSpeed:     90,   
+        deletingSpeed:   50,   
+        pauseAfterType:  2000, 
+        pauseBeforeNext: 400, 
+        startDelay:      1000, 
+    };
 
-        if (!isDeleting) {
-            if (charIndex < textLength) {
-                next.charIndex = charIndex + 1;
-                delay = TYPEWRITER_CONFIG.typingSpeed;
-            } else {
-                next.isDeleting = true;
-                delay = TYPEWRITER_CONFIG.pauseAfterTyping;
-            }
-        } else {
-            if (charIndex > 0) {
-                next.charIndex = charIndex - 1;
-                delay = TYPEWRITER_CONFIG.deletingSpeed;
-            } else {
-                next.isDeleting = false;
-                next.roleIndex = (roleIndex + 1) % state.roleCount;
-                delay = TYPEWRITER_CONFIG.pauseBeforeNext;
-            }
-        }
 
-        return { next, delay };
+    function merge(base, overrides) {
+        var out = {};
+        for (var k in base)      { out[k] = base[k]; }
+        for (var k in overrides) { out[k] = overrides[k]; }
+        return out;
     }
 
-    function runAnimation(element, roles, state) {
-        const currentText = roles[state.roleIndex];
-        element.textContent = currentText.slice(0, state.charIndex);
+    function nextStep(state, textLength) {
+        var roleIndex  = state.roleIndex;
+        var charIndex  = state.charIndex;
+        var isDeleting = state.isDeleting;
+        var roleCount  = state.roleCount;
 
-        const { next, delay } = getNextState(state, currentText.length);
-        setTimeout(() => runAnimation(element, roles, next), delay);
+        if (!isDeleting && charIndex < textLength)
+            return { next: merge(state, { charIndex: charIndex + 1 }), delay: CONFIG.typingSpeed };
+
+        if (!isDeleting)
+            return { next: merge(state, { isDeleting: true }), delay: CONFIG.pauseAfterType };
+
+        if (isDeleting && charIndex > 0)
+            return { next: merge(state, { charIndex: charIndex - 1 }), delay: CONFIG.deletingSpeed };
+
+        return {
+            next: merge(state, { isDeleting: false, roleIndex: (roleIndex + 1) % roleCount }),
+            delay: CONFIG.pauseBeforeNext,
+        };
     }
 
-    const element = document.getElementById('hero-role');
-    if (!element) return;
 
-    const rolesAttr = element.getAttribute('data-roles');
-    if (!rolesAttr) return;
+    function tick(el, roles, state) {
+        el.textContent = roles[state.roleIndex].slice(0, state.charIndex);
 
-    const roles = rolesAttr.split('|').filter(Boolean);
+        var result = nextStep(state, roles[state.roleIndex].length);
+        setTimeout(tick.bind(null, el, roles, result.next), result.delay);
+    }
+
+
+    var el = document.getElementById('hero-role');
+    if (!el) return;
+
+    var roles = (el.getAttribute('data-roles') || '').split('|').filter(Boolean);
     if (roles.length === 0) return;
 
-    const initialState = { roleIndex: 0, charIndex: 0, isDeleting: false, roleCount: roles.length };
+    var initialState = { roleIndex: 0, charIndex: 0, isDeleting: false, roleCount: roles.length };
 
-    setTimeout(() => runAnimation(element, roles, initialState), TYPEWRITER_CONFIG.startDelay);
+    setTimeout(tick.bind(null, el, roles, initialState), CONFIG.startDelay);
+
 })();
+
+
