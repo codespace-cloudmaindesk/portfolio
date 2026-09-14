@@ -276,9 +276,23 @@
     border-top: 1px solid var(--clr-border);
 }
 
+
 .footer-copy {
     font-size: 0.85rem;
     color: var(--clr-text-subtle);
+}
+
+.footer-bottom-right {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-sm);
+}
+
+.footer-rights {
+    font-size: 0.8rem;
+    color: var(--clr-text-subtle);
+    white-space: nowrap;
+    opacity: 0.75;
 }
 
 .back-to-top {
