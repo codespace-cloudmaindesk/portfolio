@@ -4,22 +4,87 @@
 
 <nav th:fragment="nav" class="main-nav">
     <div class="container nav-container">
+
+        <!-- Logo always left -->
         <div class="logo">T.<span class="logo-span"> Dinkoanyane</span></div>
 
+        <!-- Desktop links (right side, hidden on mobile) -->
+        <ul class="nav-links desktop-nav">
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/about}">About Me</a></li>
+            <li><a th:href="@{/experience}">Experience</a></li>
+            <li><a th:href="@{/projects}">Projects</a></li>
+            <li><a th:href="@{/certifications}">Certifications</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+        </ul>
+
+        <!-- Hamburger (mobile only) -->
         <button class="nav-toggle" aria-label="Toggle navigation">
             <span class="hamburger"></span>
         </button>
 
-        <div class="nav-menu">
-            <ul class="nav-links">
-                <li><a th:href="@{/}">Home</a></li>
-                <li><a th:href="@{/about}">About Me</a></li>
-                <li><a th:href="@{/experience}">Experience</a></li>
-                <li><a th:href="@{/projects}">Projects</a></li>
-                <li><a th:href="@{/contact}">Contact</a></li>
-            </ul>
-        </div>
     </div>
+
+    <!-- Mobile slide-in drawer (outside nav-container so it spans full height) -->
+    <div class="nav-menu" role="dialog" aria-label="Navigation menu">
+
+        <!-- Profile header -->
+        <div class="drawer-profile">
+            <img class="drawer-avatar" th:src="@{/images/hero_profile.png}" alt="Tumiso Dinkoanyane" />
+            <div class="drawer-profile-info">
+                <span class="drawer-name">Tumiso Dinkoanyane</span>
+                <span class="drawer-role">Data Engineer · BI Developer</span>
+            </div>
+        </div>
+
+        <nav aria-label="Site sections">
+            <ul class="nav-links">
+                <li>
+                    <a th:href="@{/}">
+                        <i class="ti ti-home-2 nav-icon"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/about}">
+                        <i class="ti ti-user nav-icon"></i>
+                        <span>About Me</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/experience}">
+                        <i class="ti ti-briefcase nav-icon"></i>
+                        <span>Experience</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/projects}">
+                        <i class="ti ti-layout-grid nav-icon"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/certifications}">
+                        <i class="ti ti-certificate nav-icon"></i>
+                        <span>Certifications</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Pinned bottom CTA -->
+        <div class="drawer-bottom">
+            <a th:href="@{/contact}" class="drawer-contact-btn">
+                <i class="ti ti-send nav-icon"></i>
+                <span>Contact Me</span>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Dark overlay behind drawer -->
+    <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
+
     <script th:src="@{/js/modules/nav.js}"></script>
 </nav>
 

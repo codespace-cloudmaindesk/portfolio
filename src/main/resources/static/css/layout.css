@@ -113,7 +113,28 @@
     gap: var(--sp-xl);
 }
 
+/* Hide drawer-only elements on desktop */
+.drawer-profile,
+.drawer-bottom,
+.nav-overlay {
+    display: none;
+}
+
+/* Desktop nav strip — always visible above 768 px */
+.desktop-nav {
+    display: flex;
+}
+
+/* Drawer nav-links — hidden on desktop */
+.nav-menu .nav-links {
+    display: none;
+}
+
 @media (max-width: 768px) {
+
+    /* ── Hide desktop strip, show hamburger ── */
+    .desktop-nav { display: none; }
+    .nav-menu .nav-links { display: flex; }
 
     .nav-toggle {
         display: flex;
@@ -146,34 +167,179 @@
     }
 
     .hamburger::before { top: -8px; }
-    .hamburger::after { bottom: -8px; }
+    .hamburger::after  { bottom: -8px; }
 
     .nav-toggle.active .hamburger { background: transparent; }
     .nav-toggle.active .hamburger::before { transform: rotate(45deg); top: 0; }
-    .nav-toggle.active .hamburger::after { transform: rotate(-45deg); bottom: 0; }
+    .nav-toggle.active .hamburger::after  { transform: rotate(-45deg); bottom: 0; }
 
+    /* ─────────────────────────────────────────
+       Slide-in drawer
+    ───────────────────────────────────────── */
     .nav-menu {
-        display: none;
+        display: flex;
+        flex-direction: column;
         position: fixed;
-        top: var(--nav-height);
+        top: 0;
         left: 0;
-        width: 100vw;
-        background: var(--clr-nav-bg);
-        border-bottom: 1px solid var(--clr-border);
-        padding: var(--sp-md) 0;
-        box-shadow: var(--shadow-md);
-        backdrop-filter: blur(12px);
-        z-index: 999;
+        width: 78vw;
+        max-width: 310px;
+        height: 100dvh;
+        background: var(--clr-bg);
+        border-right: 1px solid var(--clr-border);
+        box-shadow: 4px 0 32px rgba(0, 0, 0, 0.18);
+        z-index: 1002;
+        transform: translateX(-100%);
+        transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 
     .nav-menu.active {
-        display: block;
+        transform: translateX(0);
     }
 
+    /* ── Profile card at top of drawer ── */
+    .drawer-profile {
+        display: flex;
+        align-items: center;
+        gap: var(--sp-sm);
+        padding: calc(var(--nav-height) + var(--sp-md)) var(--sp-md) var(--sp-md);
+        background: linear-gradient(135deg,
+            color-mix(in srgb, var(--clr-primary) 15%, var(--clr-bg)) 0%,
+            var(--clr-bg) 70%);
+        border-bottom: 1px solid var(--clr-border);
+        margin-bottom: var(--sp-xs);
+    }
+
+    .drawer-avatar {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2.5px solid var(--clr-primary);
+        flex-shrink: 0;
+    }
+
+    .drawer-profile-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+    }
+
+    .drawer-name {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--clr-text);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .drawer-role {
+        font-size: 0.72rem;
+        font-weight: 400;
+        color: var(--clr-text-subtle);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* ── Nav links inside drawer ── */
     .nav-links {
         flex-direction: column;
-        gap: var(--sp-md);
+        gap: 0;
         min-height: auto;
+        padding: var(--sp-xs) 0;
+        flex: 1;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links li a {
+        display: flex;
+        align-items: center;
+        gap: var(--sp-sm);
+        padding: 0.9rem var(--sp-md);
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: var(--clr-text-muted);
+        border-left: 3px solid transparent;
+        transition:
+            background var(--transition),
+            border-color var(--transition),
+            color var(--transition);
+    }
+
+    .nav-links li a:hover {
+        background: color-mix(in srgb, var(--clr-primary) 8%, transparent);
+        color: var(--clr-primary);
+        border-left-color: var(--clr-primary);
+    }
+
+    .nav-links li a.active {
+        background: color-mix(in srgb, var(--clr-primary) 12%, transparent);
+        color: var(--clr-primary);
+        border-left-color: var(--clr-primary);
+        font-weight: 700;
+    }
+
+    .nav-links li a::after {
+        display: none;
+    }
+
+    /* icon sizing inside drawer */
+    .nav-icon {
+        font-size: 1.25rem;
+        flex-shrink: 0;
+        width: 1.5rem;
+        text-align: center;
+    }
+
+    /* ── Pinned bottom contact button ── */
+    .drawer-bottom {
+        display: block;
+        padding: var(--sp-md);
+        border-top: 1px solid var(--clr-border);
+        margin-top: auto;
+    }
+
+    .drawer-contact-btn {
+        display: flex;
+        align-items: center;
+        gap: var(--sp-sm);
+        padding: 0.75rem var(--sp-md);
+        border-radius: var(--radius-pill);
+        background: var(--gradient-primary);
+        color: #fff !important;
+        font-size: 0.9rem;
+        font-weight: 600;
+        transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .drawer-contact-btn:hover {
+        opacity: 0.9;
+        transform: translateX(3px);
+    }
+
+    /* ── Dark overlay ── */
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(3px);
+        z-index: 1001;
+        opacity: 0;
+        transition: opacity 0.32s ease;
+    }
+
+    .nav-overlay.active {
+        display: block;
+        opacity: 1;
     }
 
     .split-grid {

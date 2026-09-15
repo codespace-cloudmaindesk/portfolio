@@ -354,7 +354,50 @@
     .footer-grid {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: var(--sp-lg);
+        gap: var(--sp-md);
+    }
+
+    /* Hide redundant sections on mobile — nav drawer covers navigation,
+       logo is already in the topbar */
+    .footer-brand,
+    .footer-quicklinks {
+        display: none;
+    }
+
+    /* ── Social icons: mobile-first layout ── */
+    .footer-social {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: var(--sp-md);
+        padding: var(--sp-sm) 0;
+    }
+
+    .footer-social a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        font-size: 1.4rem;
+        background: color-mix(in srgb, var(--clr-primary) 10%, transparent);
+        color: var(--clr-primary);
+        border: 1px solid color-mix(in srgb, var(--clr-primary) 25%, transparent);
+        transition: background var(--transition), transform var(--transition), color var(--transition);
+    }
+
+    .footer-social a:hover {
+        background: var(--clr-primary);
+        color: #fff;
+        transform: translateY(-2px);
+    }
+
+    .footer-heading {
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: var(--sp-sm);
+        color: var(--clr-text-subtle);
     }
 
     .footer-tagline {
@@ -364,17 +407,25 @@
 
     .footer-bottom {
         flex-direction: column;
+        gap: var(--sp-xs);
+        text-align: center;
     }
+
     .footer-back-to-top {
+        justify-content: center;
         padding-bottom: var(--sp-xs);
     }
+
     .back-to-top {
         width: 24px;
         height: 24px;
     }
+
     .footer-bottom-right {
         gap: var(--sp-xs);
+        justify-content: center;
     }
+
     .footer-rights {
         font-size: 0.75rem;
     }

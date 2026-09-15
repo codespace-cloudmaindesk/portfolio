@@ -51,6 +51,14 @@
 
         </div>
     </section>
+
+    <section class="container section tech-strip" aria-label="Tools and Capabilities">
+        <h2 class="section-heading">What I Work With</h2>
+        <ul class="tech-tag-list">
+            <li class="tech-tag" th:each="skill : ${skills}" th:text="${skill.name}"></li>
+        </ul>
+    </section>
+
 </main>
 
 <div th:replace="~{fragments :: footer}"></div>
