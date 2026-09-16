@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -16,15 +16,15 @@
 <div th:replace="~{fragments :: nav}"></div>
 
 <main>
+
+    <!-- HERO -->
     <section class="container section hero" aria-label="Hero">
         <div class="split-grid">
 
             <div class="hero-content">
                 <p class="hero-eyebrow"><span class="eyebrow-dash"></span> Hi, I'm</p>
                 <h1 class="hero-name">Tumiso<br>Dinkoanyane</h1>
-
                 <p class="hero-role" id="hero-role" th:attr="data-roles=${#strings.listJoin(roles, roleSeparator)}"></p>
-
                 <p class="hero-bio" th:text="${about.overview[0]}"></p>
                 <div class="hero-actions">
                     <a class="btn btn-primary" th:href="@{/projects}" id="btn-view-portfolio">View Portfolio</a>
@@ -34,29 +34,136 @@
 
             <div class="hero-visual" role="presentation" aria-hidden="true">
                 <div class="hero-circle hero-circle-bg"></div>
-                <div class="hero-circle hero-circle-top">
-                    <i class="ti ti-users"></i>
-                </div>
-                <div class="hero-circle hero-circle-left">
-                    <i class="ti ti-chart-bar"></i>
-                </div>
-                <div class="hero-circle hero-circle-right">
-                    <i class="ti ti-topology-star-3"></i>
-                </div>
-
-                <img class="hero-photo"
-                     th:src="@{/images/hero_profile.png}"
-                     alt="Tumiso Dinkoanyane — profile photo" />
+                <div class="hero-circle hero-circle-top"><i class="ti ti-users"></i></div>
+                <div class="hero-circle hero-circle-left"><i class="ti ti-chart-bar"></i></div>
+                <div class="hero-circle hero-circle-right"><i class="ti ti-topology-star-3"></i></div>
+                <img class="hero-photo" th:src="@{/images/hero_profile.png}" alt="Tumiso Dinkoanyane — profile photo" />
             </div>
 
         </div>
     </section>
 
+    <!-- WHAT I WORK WITH -->
     <section class="container section tech-strip" aria-label="Tools and Capabilities">
         <h2 class="section-heading">What I Work With</h2>
         <ul class="tech-tag-list">
             <li class="tech-tag" th:each="skill : ${skills}" th:text="${skill.name}"></li>
         </ul>
+    </section>
+
+    <!-- SELECTED PROJECTS -->
+    <section class="section projects-strip" aria-label="Selected Projects" id="projects">
+        <div class="container">
+            <span class="section-label">Work</span>
+            <h2 class="section-heading">Selected Projects</h2>
+            <span class="section-heading-accent"></span>
+
+            <div class="card-grid" th:if="${not #lists.isEmpty(featuredProjects)}">
+                <article class="project-card" th:each="project : ${featuredProjects}">
+                    <h3 class="project-card-title" th:text="${project.title}"></h3>
+                    <p class="project-card-desc" th:text="${project.shortDescription}"></p>
+                    <ul class="project-tech-list" th:if="${not #lists.isEmpty(project.technologies)}">
+                        <li class="tech-tag" th:each="tech : ${project.technologies}" th:text="${tech}"></li>
+                    </ul>
+                    <div class="project-card-footer">
+                        <span class="project-status-badge" th:text="${project.status.displayName}"></span>
+                        <div class="project-card-links">
+                            <a class="project-link" th:if="${project.githubUrl}" th:href="${project.githubUrl}"
+                               target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
+                                <i class="ti ti-brand-github"></i> GitHub
+                            </a>
+                            <a class="project-link" th:if="${project.demoUrl}" th:href="${project.demoUrl}"
+                               target="_blank" rel="noopener noreferrer" aria-label="View live demo">
+                                View <i class="ti ti-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <p class="projects-empty" th:if="${#lists.isEmpty(featuredProjects)}">
+                Projects coming soon — check back later.
+            </p>
+
+            <div class="section-cta">
+                <a class="btn btn-secondary" th:href="@{/projects}" id="btn-all-projects">
+                    All Projects <i class="ti ti-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MY BACKGROUND -->
+    <section class="container section background-section" aria-label="My Background" id="background">
+        <span class="section-label">About</span>
+        <h2 class="section-heading">My Background</h2>
+        <span class="section-heading-accent"></span>
+
+        <div class="background-inner">
+            <div>
+                <p class="background-text" th:text="${about.description[0]}"></p>
+                <div style="margin-top: var(--sp-lg);">
+                    <a class="btn btn-primary" th:href="@{/about}" id="btn-about-me">
+                        About Me <i class="ti ti-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="background-visual">
+                <ul class="bg-stat-list">
+                    <li class="bg-stat-item"><i class="ti ti-school"></i> BCom Accounting &amp; Diploma in Software Engineering</li>
+                    <li class="bg-stat-item"><i class="ti ti-database"></i> SQL &middot; Python &middot; Power BI &middot; SAP</li>
+                    <li class="bg-stat-item"><i class="ti ti-briefcase"></i> Audit, Finance &amp; Data Engineering experience</li>
+                    <li class="bg-stat-item"><i class="ti ti-map-pin"></i> Johannesburg, South Africa</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="section cert-strip" aria-label="Certifications" id="certifications">
+        <div class="container">
+            <span class="section-label">Credentials</span>
+            <h2 class="section-heading">Certifications</h2>
+            <span class="section-heading-accent"></span>
+
+            <div class="cert-grid">
+                <a class="cert-card"
+                   th:each="cert : ${certifications}"
+                   th:href="${cert.credentialUrl}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   th:aria-label="'View credential: ' + ${cert.name}">
+                    <div class="cert-icon-wrap"><i class="ti ti-certificate"></i></div>
+                    <div class="cert-info">
+                        <span class="cert-name" th:text="${cert.name}"></span>
+                        <div class="cert-meta">
+                            <span th:text="${cert.issuer}"></span>
+                            <span class="cert-meta-sep"></span>
+                            <span th:text="${cert.issueDate}"></span>
+                        </div>
+                        <span class="cert-view-link">View Credential <i class="ti ti-external-link"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- LET'S CONNECT -->
+    <section class="container section connect-section" aria-label="Let's Connect" id="connect">
+        <div class="connect-inner">
+            <h2 class="connect-title">Have a project or <span>opportunity?</span></h2>
+            <p class="connect-sub">
+                I'm open to Data Engineering roles, BI consulting, and freelance analytics work.
+                Let's build something meaningful together.
+            </p>
+            <div class="connect-actions">
+                <a class="btn btn-primary" th:href="@{/contact}" id="btn-connect-contact">Contact Me</a>
+                <a class="btn btn-secondary" href="https://www.linkedin.com/in/tumisodinkoanyane/"
+                   target="_blank" rel="noopener noreferrer" id="btn-connect-linkedin">
+                    <i class="ti ti-brand-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </div>
     </section>
 
 </main>
