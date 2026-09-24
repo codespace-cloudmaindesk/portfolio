@@ -1,6 +1,7 @@
 package com.cloudstudio.portfolio.controller;
 
 import com.cloudstudio.portfolio.service.AboutService;
+import com.cloudstudio.portfolio.service.MetricService;
 import com.cloudstudio.portfolio.service.RoleService;
 import com.cloudstudio.portfolio.service.SkillService;
 import org.springframework.stereotype.Controller;
@@ -15,11 +16,14 @@ public class HomeController {
     private final RoleService roleService;
     private final AboutService aboutService;
     private final SkillService skillService;
+    private final MetricService metricService;
 
-    public HomeController(RoleService roleService, AboutService aboutService, SkillService skillService) {
+    public HomeController(RoleService roleService, AboutService aboutService,
+                          SkillService skillService, MetricService metricService) {
         this.roleService = roleService;
         this.aboutService = aboutService;
         this.skillService = skillService;
+        this.metricService = metricService;
     }
 
     @GetMapping
@@ -28,6 +32,7 @@ public class HomeController {
         model.addAttribute("about", aboutService.getAboutContent());
         model.addAttribute("roleSeparator", "|");
         model.addAttribute("skills", skillService.getAllSkills());
+        model.addAttribute("metrics", metricService.getAllMetrics());
         return "home";
     }
-}
+}

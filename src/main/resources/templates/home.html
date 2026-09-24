@@ -9,7 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/base.css}" />
     <link rel="stylesheet" th:href="@{/css/layout.css}" />
     <link rel="stylesheet" th:href="@{/css/components.css}" />
-    <link rel="stylesheet" th:href="@{/css/pages/hero.css}" />
+    <link rel="stylesheet" th:href="@{/css/pages/home.css}" />
 </head>
 <body>
 
@@ -20,7 +20,6 @@
     <!-- HERO -->
     <section class="container section hero" aria-label="Hero">
         <div class="split-grid">
-
             <div class="hero-content">
                 <p class="hero-eyebrow"><span class="eyebrow-dash"></span> Hi, I'm</p>
                 <h1 class="hero-name">Tumiso<br>Dinkoanyane</h1>
@@ -31,31 +30,172 @@
                     <a class="btn btn-secondary" th:href="@{/contact}" id="btn-contact-me">Contact Me</a>
                 </div>
             </div>
-
             <div class="hero-visual" role="presentation" aria-hidden="true">
                 <div class="hero-circle hero-circle-bg"></div>
                 <div class="hero-circle hero-circle-top"><i class="ti ti-users"></i></div>
                 <div class="hero-circle hero-circle-left"><i class="ti ti-chart-bar"></i></div>
                 <div class="hero-circle hero-circle-right"><i class="ti ti-topology-star-3"></i></div>
-                <img class="hero-photo" th:src="@{/images/hero_profile.png}" alt="Tumiso Dinkoanyane — profile photo" />
+                <img class="hero-photo" th:src="@{/images/hero_profile.png}" alt="Tumiso Dinkoanyane profile photo" />
             </div>
-
         </div>
     </section>
 
-    <!-- WHAT I WORK WITH -->
-    <section class="container section tech-strip" aria-label="Tools and Capabilities">
-        <h2 class="section-heading">What I Work With</h2>
-        <ul class="tech-tag-list">
-            <li class="tech-tag" th:each="skill : ${skills}" th:text="${skill.name}"></li>
+    <!-- KPI STATS STRIP -->
+    <section class="kpi-section" aria-label="Key figures">
+        <div class="container kpi-strip">
+            <div class="kpi-item" th:each="m : ${metrics}">
+                <span class="kpi-number" th:attr="data-target=${m.target}, data-suffix=${m.suffix}">0</span>
+                <span class="kpi-desc" th:text="${m.label}"></span>
+            </div>
+            <div class="kpi-item">
+                <span class="kpi-number" data-target="3" data-suffix="">3</span>
+                <span class="kpi-desc">Core Disciplines</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SELECTED WORK -->
+    <section class="container section" aria-label="Selected Work" id="selected-work">
+        <div class="section-heading-row">
+            <div>
+                <span class="section-kicker">SELECTED WORK</span>
+                <h2 class="section-title">Recent projects.</h2>
+            </div>
+            <a class="text-link" th:href="@{/projects}">View all projects <i class="ti ti-arrow-up-right"></i></a>
+        </div>
+
+        <div class="project-grid">
+            <article class="project-card project-card--featured">
+                <div class="project-image-wrap">
+                    <img th:src="@{/images/projects/sales-dashboard.png}" alt="Business Performance Dashboard" class="project-img" />
+                    <span class="project-badge">Analytics / BI</span>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Business Performance Dashboard</h3>
+                    <p class="project-desc">Interactive reporting focused on revenue, gross profit, and customer performance across multiple business units.</p>
+                    <a th:href="@{/projects}" class="project-link">Explore project <i class="ti ti-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-image-wrap">
+                    <img th:src="@{/images/projects/etl-pipeline.png}" alt="Automated ETL Pipeline" class="project-img" />
+                    <span class="project-badge">Data Engineering</span>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Automated ETL Pipeline</h3>
+                    <p class="project-desc">End-to-end data pipeline that ingests, transforms, and loads financial data from SAP into a centralised data warehouse.</p>
+                    <a th:href="@{/projects}" class="project-link">Explore project <i class="ti ti-arrow-right"></i></a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-image-wrap">
+                    <img th:src="@{/images/projects/forecasting-model.png}" alt="Revenue Forecasting Model" class="project-img" />
+                    <span class="project-badge">Python / ML</span>
+                </div>
+                <div class="project-content">
+                    <h3 class="project-title">Revenue Forecasting Model</h3>
+                    <p class="project-desc">Python-powered forecasting model that predicts quarterly revenue with 92% accuracy using historical sales and market data.</p>
+                    <a th:href="@{/projects}" class="project-link">Explore project <i class="ti ti-arrow-right"></i></a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services-section" aria-label="Services">
+        <div class="container section">
+            <div class="section-heading-row">
+                <div>
+                    <span class="section-kicker">WHAT I DO</span>
+                    <h2 class="section-title">How I add value.</h2>
+                </div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="ti ti-database"></i></div>
+                    <h3>Data Engineering</h3>
+                    <p>Designing and building scalable ETL pipelines, data models, and integrations that make raw data reliable and usable.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="ti ti-chart-dots-3"></i></div>
+                    <h3>Business Intelligence</h3>
+                    <p>Translating complex datasets into clear, actionable dashboards and reports using Power BI and SQL.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="ti ti-report-analytics"></i></div>
+                    <h3>Business Analysis</h3>
+                    <p>Bridging the gap between business requirements and technical implementations, from process mapping to system optimisation.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="ti ti-brand-python"></i></div>
+                    <h3>Python Development</h3>
+                    <p>Building automation scripts, data-processing tools, and predictive models to accelerate decision-making.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOOLKIT / SKILLS -->
+    <section class="container section" aria-label="Skills and Tools">
+        <div class="section-heading-row">
+            <div>
+                <span class="section-kicker">TOOLKIT</span>
+                <h2 class="section-title">What I work with.</h2>
+            </div>
+            <a class="text-link" th:href="@{/skills}">View all skills <i class="ti ti-arrow-up-right"></i></a>
+        </div>
+
+        <div class="skills-list" id="skills-list">
+            <div class="skill-item" th:each="skill : ${skills}">
+                <div class="skill-header">
+                    <span class="skill-title" th:text="${skill.name}"></span>
+                    <span class="skill-pct" th:text="${skill.level} + '%'"></span>
+                </div>
+                <div class="skill-progress" role="progressbar"
+                     th:attr="aria-valuenow=${skill.level}, aria-valuemax=100, aria-label=${skill.name}">
+                    <div class="skill-progress-fill" th:attr="data-width=${skill.level} + '%'"></div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="tech-tag-list" aria-label="Tools">
+            <li class="tech-tag">SQL</li>
+            <li class="tech-tag">Python</li>
+            <li class="tech-tag">Power BI</li>
+            <li class="tech-tag">SAP</li>
+            <li class="tech-tag">Azure</li>
+            <li class="tech-tag">Spark</li>
+            <li class="tech-tag">dbt</li>
+            <li class="tech-tag">Pandas</li>
+            <li class="tech-tag">Git</li>
+            <li class="tech-tag">Excel</li>
         </ul>
     </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-section" aria-label="Call to action">
+        <div class="container cta-inner">
+            <div class="cta-text">
+                <h2>Let's build something that matters.</h2>
+                <p>Open to full-time roles, freelance projects, and collaboration opportunities in data and analytics.</p>
+            </div>
+            <div class="cta-actions">
+                <a class="btn btn-primary" th:href="@{/contact}" id="btn-cta-contact">Get in Touch</a>
+                <a class="btn btn-secondary" th:href="@{/projects}" id="btn-cta-projects">See My Work</a>
+            </div>
+        </div>
+    </section>
+
+</main>
 
 <div th:replace="~{fragments :: footer}"></div>
 
 <script th:src="@{/js/app.js}"></script>
 <script th:src="@{/js/pages/constants.js}"></script>
 <script th:src="@{/js/pages/typewriter.js}"></script>
+<script th:src="@{/js/pages/home.js}"></script>
 
 </body>
 </html>
