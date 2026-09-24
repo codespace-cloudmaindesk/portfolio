@@ -127,7 +127,6 @@
     box-shadow: 0 2px 6px var(--shadow-glow-primary);
 }
 
-/* --- Cards (services, projects) --- */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -197,7 +196,6 @@
     color: transparent;
 }
 
-/* --- Footer --- */
 .site-footer {
     padding-top: var(--sp-xl);
 }
@@ -316,11 +314,11 @@
     visibility: hidden;
     transform: translateY(8px);
     transition:
-            opacity var(--transition),
-            transform var(--transition),
-            border-color var(--transition),
-            color var(--transition),
-            visibility 0s 0.25s;
+        opacity var(--transition),
+        transform var(--transition),
+        border-color var(--transition),
+        color var(--transition),
+        visibility 0s 0.25s;
 }
 
 .back-to-top.visible {
@@ -329,11 +327,11 @@
     visibility: visible;
     transform: translateY(0);
     transition:
-            opacity var(--transition),
-            transform var(--transition),
-            border-color var(--transition),
-            color var(--transition),
-            visibility 0s 0s;
+        opacity var(--transition),
+        transform var(--transition),
+        border-color var(--transition),
+        color var(--transition),
+        visibility 0s 0s;
 }
 
 .back-to-top:hover {
@@ -357,14 +355,11 @@
         gap: var(--sp-md);
     }
 
-    /* Hide redundant sections on mobile — nav drawer covers navigation,
-       logo is already in the topbar */
     .footer-brand,
     .footer-quicklinks {
         display: none;
     }
 
-    /* ── Social icons: mobile-first layout ── */
     .footer-social {
         justify-content: center;
         flex-wrap: wrap;
@@ -383,7 +378,10 @@
         background: color-mix(in srgb, var(--clr-primary) 10%, transparent);
         color: var(--clr-primary);
         border: 1px solid color-mix(in srgb, var(--clr-primary) 25%, transparent);
-        transition: background var(--transition), transform var(--transition), color var(--transition);
+        transition:
+            background var(--transition),
+            transform var(--transition),
+            color var(--transition);
     }
 
     .footer-social a:hover {

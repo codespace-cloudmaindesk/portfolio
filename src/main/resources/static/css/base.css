@@ -30,6 +30,7 @@
 
     --radius-pill: 999px;
     --radius-card: 1.25rem;
+    --radius-sm: 1.5rem;
 
     --transition: 0.25s ease;
     --easing-smooth: cubic-bezier(0.4, 0, 0.2, 1);

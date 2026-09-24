@@ -16,6 +16,12 @@
 
     <h1 th:text="${about.title}"></h1>
 
+    <div class="about-image-column">
+        <div class="about-image">
+            <img th:src="@{/images/under_01.png}" alt="Tumiso Dinkoanyane"  class="about-img" />
+        </div>
+    </div>
+
     <p th:each="paragraph : ${about.description}" th:text="${paragraph}"></p>
     </div>
 </main>
