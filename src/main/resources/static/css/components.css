@@ -89,6 +89,12 @@
     gap: var(--sp-sm);
 }
 
+.skill-pct {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--clr-primary);
+}
+
 .skill-title {
     display: block;
     margin-bottom: 0.4rem;

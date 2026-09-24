@@ -18,7 +18,8 @@
     <h2 class="section-heading">Skills</h2>
     <ul class="skills-list">
         <li th:each="skill : ${skills}">
-            <span class="skill-title" th:text="${skill.name} + ' - ' + ${skill.level} + '%'"></span>
+            <span class="skill-title" th:text="${skill.name}"></span>
+            <span class="skill-pct" th:text="${skill.level} + '%'"></span>
             <div class="skill-progress">
                 <div class="skill-progress-fill" th:style="'width: ' + ${skill.level} + '%;'"></div>
             </div>
