@@ -31,8 +31,19 @@ public class HomeController {
         model.addAttribute("roles", roleService.getAllRoles());
         model.addAttribute("about", aboutService.getAboutContent());
         model.addAttribute("roleSeparator", "|");
-        model.addAttribute("skills", skillService.getAllSkills());
+
+        var skills = skillService.getAllSkills();
+        model.addAttribute("skills", skills);
         model.addAttribute("metrics", metricService.getAllMetrics());
+
+        // Flat, deduplicated tool list for the marquee section
+        var allTools = skills.stream()
+                .filter(s -> s.getTools() != null)
+                .flatMap(s -> s.getTools().stream())
+                .distinct()
+                .toList();
+        model.addAttribute("allTools", allTools);
+
         return "home";
     }
 }

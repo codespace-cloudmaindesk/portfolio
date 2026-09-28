@@ -47,4 +47,6 @@
     color: var(--error-msg-clr);
 }
 
-.form-status--success { color: var(--sucess-msg-clr);}
+.form-status--success {
+    color: var(--sucess-msg-clr);
+}
