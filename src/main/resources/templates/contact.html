@@ -8,34 +8,40 @@
     <link rel="stylesheet" th:href="@{/css/base.css}" />
     <link rel="stylesheet" th:href="@{/css/layout.css}" />
     <link rel="stylesheet" th:href="@{/css/components.css}" />
+    <link rel="stylesheet" th:href="@{/css/pages/contact.css}" />
 </head>
 <body>
 
 <div th:replace="~{fragments :: nav}"></div>
 
 <main>
-<div class="container section">
+<div class="container section contact-grid split-grid">
+    <div class="contact-intro">
+        <h1 class="section-heading">Let's work Together</h1>
+        <p class="section-subtitle">
+            Have a project in mind, or just want to say hello? Fill out the form and I'll get back to you shortly.
+        </p>
+    </div>
 
-    <h1>Contact Me</h1>
 
     <p th:if="${successMessage}" th:text="${successMessage}"></p>
 
-    <form th:action="@{/contact}" th:object="${contactMessageDto}" method="post">
+    <form class="contact-form"  th:action="@{/contact}" th:object="${contactMessageDto}" method="post">
+        <div class="form-group">
+            <label>Name:</label>
+            <input type="text" th:field="*{name}" />
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
 
-        <label>Name:</label>
-        <input type="text" th:field="*{name}" />
-        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            <label>Email:</label>
+            <input type="text" th:field="*{email}" />
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
 
-        <label>Email:</label>
-        <input type="text" th:field="*{email}" />
-        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            <label>Message:</label>
+            <textarea th:field="*{message}"></textarea>
+            <p th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></p>
 
-        <label>Message:</label>
-        <textarea th:field="*{message}"></textarea>
-        <p th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></p>
-
-        <button type="submit">Send</button>
-
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </div>
     </form>
 
 </div>
