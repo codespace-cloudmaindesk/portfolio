@@ -1,4 +1,4 @@
-/* ========== HOME PAGE STYLES ========== */
+﻿/* ========== HOME PAGE STYLES ========== */
 .hero.section {
     padding-top: var(--sp-xl);
     padding-bottom: var(--sp-sm);
@@ -161,15 +161,6 @@
     padding-left: var(--sp-sm);
 }
 
-.toolkit-description {
-    color: var(--clr-text-muted);
-    font-size: 0.85rem;
-    line-height: 1.5;
-    padding-left: var(--sp-sm);
-    margin-top: 0.5rem;
-    max-width: 220px;
-}
-
 /* ---- Scrolling track — flows out from the heading ---- */
 .home-marquee-track {
     position: relative;
@@ -224,17 +215,17 @@
     font-weight: 600;
     color: var(--clr-text);
     white-space: nowrap;
-    background: var(--clr-bg);
+    text-shadow: 0 2px 8px var(--shadow-glow-md);
     transition:
+        color 0.25s var(--easing-smooth),
         transform 0.25s var(--easing-smooth),
-        box-shadow 0.25s var(--easing-smooth),
-        border-color 0.25s var(--easing-smooth);
+        text-shadow 0.25s var(--easing-smooth),
 }
 
 .home-marquee-group li:hover {
+    color: var(--clr-primary);
     transform: translateY(-2px);
-    box-shadow: 0 2px 10px var(--shadow-glow-md);
-    filter: brightness(1.1);
+    text-shadow: 0 2px 10px var(--shadow-glow-md);
 }
 
 /* Pause on hover */
