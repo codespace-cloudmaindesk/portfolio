@@ -1,7 +1,3 @@
-.contact-grid {
-    padding: var(--sp-xl) 0;
-}
-
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -32,6 +28,12 @@
     transition: border-color var(--transition);
 }
 
+/* Give the textarea enough height for a proper message */
+.form-group textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--clr-primary);
@@ -42,8 +44,7 @@
 .form-error {
     min-height: 1.1rem;
     font-size: 0.8rem;
-    color: #d64545;
+    color: var(--error-msg-clr);
 }
 
-.form-status--success { color: #2f9e44; }
-.form-status--error { color: #d64545; }
+.form-status--success { color: var(--sucess-msg-clr);}
