@@ -1,0 +1,52 @@
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-md);
+    max-width: 600px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--clr-text-muted);
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-card);
+    font-size: 0.95rem;
+    color: var(--clr-text);
+    background: var(--clr-bg);
+    transition: border-color var(--transition);
+}
+
+/* Give the textarea enough height for a proper message */
+.form-group textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--clr-primary);
+    outline: 2px solid var(--clr-primary);
+    outline-offset: 2px;
+}
+
+.form-error {
+    min-height: 1.1rem;
+    font-size: 0.8rem;
+    color: var(--error-msg-clr);
+}
+
+.form-status--success {
+    color: var(--sucess-msg-clr);
+}

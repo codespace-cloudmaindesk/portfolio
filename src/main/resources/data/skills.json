@@ -1,6 +1,27 @@
 [
-  { "name": "Data Engineering", "level": 92},
-  { "name": "Business Intelligence & SQL", "level": 79 },
-  { "name": "Python", "level": 89 },
-  { "name": "Financial Reporting", "level": 85 }
+  {
+    "name": "Data Engineering",
+    "level": 92,
+    "tools": ["Python", "SQL", "Databricks"]
+  },
+  {
+    "name": "Business Intelligence & SQL",
+    "level": 79,
+    "tools": ["SQL", "Power BI", "DAX"]
+  },
+  {
+    "name": "Python",
+    "level": 89,
+    "tools": ["Python"]
+  },
+  {
+    "name": "Financial Reporting",
+    "level": 85,
+    "tools": ["Excel", "SAP"]
+  },
+  {
+    "name": "Web Development",
+    "level": 80,
+    "tools": ["Java", "Spring Boot", "Thymeleaf", "HTML", "CSS", "JavaScript", "PostgreSQL","Figma"]
+  }
 ]

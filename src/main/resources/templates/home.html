@@ -9,7 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/base.css}" />
     <link rel="stylesheet" th:href="@{/css/layout.css}" />
     <link rel="stylesheet" th:href="@{/css/components.css}" />
-    <link rel="stylesheet" th:href="@{/css/pages/hero.css}" />
+    <link rel="stylesheet" th:href="@{/css/pages/home.css}" />
 </head>
 <body>
 
@@ -17,10 +17,9 @@
 
 <main>
 
-    <!-- HERO -->
+    <!-- HERO SECTION -->
     <section class="container section hero" aria-label="Hero">
         <div class="split-grid">
-
             <div class="hero-content">
                 <p class="hero-eyebrow"><span class="eyebrow-dash"></span> Hi, I'm</p>
                 <h1 class="hero-name">Tumiso<br>Dinkoanyane</h1>
@@ -31,31 +30,46 @@
                     <a class="btn btn-secondary" th:href="@{/contact}" id="btn-contact-me">Contact Me</a>
                 </div>
             </div>
-
             <div class="hero-visual" role="presentation" aria-hidden="true">
                 <div class="hero-circle hero-circle-bg"></div>
                 <div class="hero-circle hero-circle-top"><i class="ti ti-users"></i></div>
                 <div class="hero-circle hero-circle-left"><i class="ti ti-chart-bar"></i></div>
                 <div class="hero-circle hero-circle-right"><i class="ti ti-topology-star-3"></i></div>
-                <img class="hero-photo" th:src="@{/images/hero_profile.png}" alt="Tumiso Dinkoanyane — profile photo" />
+                <img class="hero-photo" th:src="@{/images/hero_profile.png}" alt="Tumiso Dinkoanyane profile photo" />
             </div>
-
         </div>
     </section>
 
-    <!-- WHAT I WORK WITH -->
-    <section class="container section tech-strip" aria-label="Tools and Capabilities">
-        <h2 class="section-heading">What I Work With</h2>
-        <ul class="tech-tag-list">
-            <li class="tech-tag" th:each="skill : ${skills}" th:text="${skill.name}"></li>
-        </ul>
+    <!-- TOOLKIT MARQUEE -->
+   <section class="home-marquee" aria-labelledby="toolkit-title">
+
+        <div class="home-marquee-layout">
+            <header class="home-marquee-head">
+                <h2 class="section-title" id="toolkit-title">What I<br>Work With</h2>
+                <p class="toolkit-description">Languages, platforms and business systems I have experience with.</p>
+            </header>
+
+            <div class="home-marquee-track">
+                <ul class="home-marquee-group" th:if="${allTools != null and !allTools.isEmpty()}">
+                    <li class="home-marquee-item" th:each="tool : ${allTools}" th:text="${tool}"></li>
+                </ul>
+
+                <ul class="home-marquee-group" aria-hidden="true" th:if="${allTools != null and !allTools.isEmpty()}">
+                    <li class="home-marquee-item" th:each="tool : ${allTools}" th:text="${tool}"></li>
+                </ul>
+            </div>
+        </div>
+
     </section>
+
+</main>
 
 <div th:replace="~{fragments :: footer}"></div>
 
 <script th:src="@{/js/app.js}"></script>
 <script th:src="@{/js/pages/constants.js}"></script>
 <script th:src="@{/js/pages/typewriter.js}"></script>
+<script th:src="@{/js/pages/home.js}"></script>
 
 </body>
 </html>

@@ -4,7 +4,10 @@
 }
 
 .main-nav {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
     background: var(--clr-nav-bg);
     backdrop-filter: blur(12px);
@@ -54,7 +57,6 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    /* Reliable mobile tap target */
     min-width: 44px;
     min-height: 44px;
     padding: 0;
@@ -113,26 +115,26 @@
     gap: var(--sp-xl);
 }
 
-/* Hide drawer-only elements on desktop */
 .drawer-profile,
 .drawer-bottom,
 .nav-overlay {
     display: none;
 }
 
-/* Desktop nav strip — always visible above 768 px */
 .desktop-nav {
     display: flex;
 }
 
-/* Drawer nav-links — hidden on desktop */
 .nav-menu .nav-links {
     display: none;
 }
 
 @media (max-width: 768px) {
 
-    /* ── Hide desktop strip, show hamburger ── */
+    body {
+        padding-top: var(--nav-height);
+    }
+
     .desktop-nav { display: none; }
     .nav-menu .nav-links { display: flex; }
 
@@ -161,9 +163,9 @@
         height: 2px;
         background: var(--clr-text);
         transition:
-                transform var(--transition),
-                top var(--transition),
-                bottom var(--transition);
+            transform var(--transition),
+            top var(--transition),
+            bottom var(--transition);
     }
 
     .hamburger::before { top: -8px; }
@@ -173,9 +175,6 @@
     .nav-toggle.active .hamburger::before { transform: rotate(45deg); top: 0; }
     .nav-toggle.active .hamburger::after  { transform: rotate(-45deg); bottom: 0; }
 
-    /* ─────────────────────────────────────────
-       Slide-in drawer
-    ───────────────────────────────────────── */
     .nav-menu {
         display: flex;
         flex-direction: column;
@@ -199,7 +198,6 @@
         transform: translateX(0);
     }
 
-    /* ── Profile card at top of drawer ── */
     .drawer-profile {
         display: flex;
         align-items: center;
@@ -246,7 +244,6 @@
         text-overflow: ellipsis;
     }
 
-    /* ── Nav links inside drawer ── */
     .nav-links {
         flex-direction: column;
         gap: 0;
@@ -299,7 +296,6 @@
         text-align: center;
     }
 
-    /* ── Pinned bottom contact button ── */
     .drawer-bottom {
         display: block;
         padding: var(--sp-md);
@@ -325,7 +321,6 @@
         transform: translateX(3px);
     }
 
-    /* ── Dark overlay ── */
     .nav-overlay {
         display: none;
         position: fixed;

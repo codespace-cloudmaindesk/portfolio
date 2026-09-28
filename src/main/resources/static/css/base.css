@@ -12,6 +12,11 @@
     --clr-nav-bg: rgba(255, 255, 255, 0.95);
     --gradient-primary: linear-gradient(270deg, #df8908 10%, #ff1d15 100%);
 
+    --sucess-msg-clr: #2f9e44;
+    --error-msg-clr:#ff1d12;
+    --warning-msg-clr:#ffc107;
+    --info-msg-clr:#29b6f6;
+
     --shadow-glow-primary: rgba(253, 111, 0, 0.35);
     --shadow-glow-md: rgba(0, 0, 0, 0.06);
     --shadow-sm: 0 2px 8px rgba(28, 25, 25, 0.06);
@@ -30,6 +35,7 @@
 
     --radius-pill: 999px;
     --radius-card: 1.25rem;
+    --radius-sm: 1.5rem;
 
     --transition: 0.25s ease;
     --easing-smooth: cubic-bezier(0.4, 0, 0.2, 1);
