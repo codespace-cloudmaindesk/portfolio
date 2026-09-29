@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -35,7 +35,7 @@
                 <div class="hero-circle hero-circle-top"><i class="ti ti-users"></i></div>
                 <div class="hero-circle hero-circle-left"><i class="ti ti-chart-bar"></i></div>
                 <div class="hero-circle hero-circle-right"><i class="ti ti-topology-star-3"></i></div>
-                <img class="hero-photo" th:src="@{/images/hero_profile.png}" alt="Tumiso Dinkoanyane profile photo" />
+                <img class="hero-photo" th:src="@{/images/under_01.jpg}" alt="Tumiso Dinkoanyane profile photo" />
             </div>
         </div>
     </section>
@@ -99,7 +99,7 @@
             <div class="home-metric" th:each="metric : ${metrics}">
                 <dt th:text="${metric.label}">Label</dt>
                 <dd>
-                    <span class="js-count" th:data-target="${metric.target}" th:text="${metric.target}">0</span><span class="home-metric-suffix" th:text="${metric.suffix}"></span>
+                    <span class="js-count" th:data-target="${metric.target}">0</span><span class="home-metric-suffix" th:text="${metric.suffix}"></span>
                 </dd>
             </div>
         </dl>
@@ -120,6 +120,7 @@
 <script th:src="@{/js/app.js}"></script>
 <script th:src="@{/js/pages/constants.js}"></script>
 <script th:src="@{/js/pages/typewriter.js}"></script>
+<script th:src="@{/js/pages/home.js}"></script>
 
 </body>
 </html>
