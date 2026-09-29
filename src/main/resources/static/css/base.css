@@ -17,6 +17,9 @@
     --warning-msg-clr:#ffc107;
     --info-msg-clr:#29b6f6;
 
+    --card:#F0EAD6;
+    --card-2:#F0EAD6;
+
     --shadow-glow-primary: rgba(253, 111, 0, 0.35);
     --shadow-glow-md: rgba(0, 0, 0, 0.06);
     --shadow-sm: 0 2px 8px rgba(28, 25, 25, 0.06);

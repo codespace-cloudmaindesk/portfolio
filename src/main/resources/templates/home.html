@@ -58,8 +58,60 @@
                 </ul>
             </div>
         </div>
-
     </section>
+
+    <!-- THE BACKGROUND OVERVIEW -->
+    <section class="container section" aria-labelledby="story-title">
+        <header class="home-head">
+            <h2 id="story-title" class="section-heading">Where Accounting Meets Code</h2>
+        </header>
+        <p class="home-lead" th:each="paragraph : ${about.background}" th:text="${paragraph}"></p>
+
+        <ul class="home-venn">
+            <li class="home-circle">
+                <i class="ti ti-calculator home-icon" aria-hidden="true"></i>
+                <h3>Accounting</h3>
+                <p>
+                <span th:text="${accEdu.qualification}">
+                    BCom in Accounting:
+                </span>
+                    How numbers are produced, controlled and read.
+                </p>
+            </li>
+            <li class="home-circle home-circle-core">
+                <i class="ti ti-topology-star-3 home-icon" aria-hidden="true"></i>
+                <h3>Data &amp; BI</h3>
+                <p>Where the two meet: reporting the business can trust.</p>
+            </li>
+            <li class="home-circle">
+                <i class="ti ti-code home-icon" aria-hidden="true"></i>
+                <h3>Software Engineering</h3>
+                <p>
+                <span th:text="${devEdu.qualification}">
+                    Diploma in Software Engineering:
+                </span>
+                    The systems that put numbers to work.
+                </p>
+            </li>
+        </ul>
+
+        <dl class="home-metrics" th:if="${not #lists.isEmpty(metrics)}">
+            <div class="home-metric" th:each="metric : ${metrics}">
+                <dt th:text="${metric.label}">Label</dt>
+                <dd>
+                    <span class="js-count" th:data-target="${metric.target}" th:text="${metric.target}">0</span><span class="home-metric-suffix" th:text="${metric.suffix}"></span>
+                </dd>
+            </div>
+        </dl>
+
+        <div class="home-more">
+            <a class="home-more-link" th:href="@{/about}">
+                <span>Read the full story</span>
+                <i class="ti ti-arrow-right" aria-hidden="true"></i>
+            </a>
+        </div>
+    </section>
+
 
 </main>
 
