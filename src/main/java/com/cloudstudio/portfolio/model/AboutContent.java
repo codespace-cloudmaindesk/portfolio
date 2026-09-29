@@ -12,5 +12,6 @@ import java.util.List;
 public class AboutContent {
     private String title;
     private List<String> overview;
+    private List<String> background;
     private List<String> description;
 }

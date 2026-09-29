@@ -8,6 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/base.css}" />
     <link rel="stylesheet" th:href="@{/css/layout.css}" />
     <link rel="stylesheet" th:href="@{/css/components.css}" />
+    <link rel="stylesheet" th:href="@{/css/pages/home.css}" />
 </head>
 <body>
 
@@ -16,16 +17,19 @@
 <main>
 <div class="container section">
     <h2 class="section-heading">Metrics</h2>
-    <ul class="kpi-grid">
-        <li class="kpi-card" th:each="mtr : ${metrics}">
-            <span class="kpi-value" th:text="${mtr.target} + ${mtr.suffix}"></span>
-            <span class="kpi-label" th:text="${mtr.label}"></span>
-        </li>
-    </ul>
+    <dl class="kpi-grid home-metrics" th:if="${metrics != null and !metrics.isEmpty()}">
+        <div class="home-metric" th:each="mtr : ${metrics}">
+            <dt th:text="${mtr.label}">Label</dt>
+            <dd>
+                <span class="js-count" th:data-target="${mtr.target}">0</span><span class="home-metric-suffix" th:text="${mtr.suffix}"></span>
+            </dd>
+        </div>
+    </dl>
 </div>
 </main>
 
 <div th:replace="~{fragments :: footer}"></div>
 
+<script th:src="@{/js/pages/home.js}"></script>
 </body>
 </html>

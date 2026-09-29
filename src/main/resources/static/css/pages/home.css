@@ -1,4 +1,4 @@
-﻿/* ========== HOME PAGE STYLES ========== */
+/* ========== HOME PAGE STYLES ========== */
 .hero.section {
     padding-top: var(--sp-xl);
     padding-bottom: var(--sp-sm);
@@ -47,8 +47,15 @@
 }
 
 @keyframes cursor-blink {
-    0%,  100% { opacity: 1; }
-    50%        { opacity: 0; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 .hero-bio {
@@ -234,7 +241,9 @@
 }
 
 @keyframes home-scroll {
-    to { transform: translateX(-100%); }
+    to {
+        transform: translateX(-100%);
+    }
 }
 
 /* ---- Reduced-motion fallback ---- */
@@ -256,6 +265,359 @@
     }
 }
 
+/* ============= BACKGROUND OVERVIEW SECTION ============= */
+
+/* --- Section header + lead copy --- */
+.home-head {
+    margin-bottom: var(--sp-md);
+}
+
+.home-lead {
+    max-width: 700px;
+    margin: 0 0 var(--sp-sm);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--clr-text-muted);
+}
+
+.home-lead:last-of-type {
+    margin-bottom: var(--sp-xl);
+}
+
+/* --- Overlapping circles (Venn diagram) --- */
+.home-venn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    margin-bottom: var(--sp-xl);
+}
+
+.home-circle {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: clamp(230px, 27vw, 310px);
+    aspect-ratio: 1;
+    margin-left: -2.5rem;
+    padding: 2.5rem 3.5rem;
+    border-radius: 50%;
+    background: var(--clr-bg);
+    border: 1px solid var(--clr-border);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    transition: transform 0.3s var(--easing-smooth),
+        box-shadow 0.3s var(--easing-smooth);
+}
+
+.home-circle:first-child {
+    margin-left: 0;
+}
+
+.home-circle:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Fine inner ring: the "blueprint" detail; turns orange on hover */
+.home-circle::before {
+    content: "";
+    position: absolute;
+    inset: 0.7rem;
+    border: 1px dashed rgba(253, 111, 0, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    transition: border-color var(--transition);
+}
+
+.home-circle:hover::before {
+    border-color: var(--clr-primary);
+}
+
+.home-circle h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--clr-text);
+}
+
+/* Short orange dash under each title (same detail as the metric labels) */
+.home-circle h3::after {
+    content: "";
+    display: block;
+    width: 1.75rem;
+    height: 2px;
+    margin: 0.4rem auto 0;
+    background: var(--clr-primary);
+}
+
+.home-circle p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--clr-text-muted);
+}
+
+/* Qualification line from the model, shown as a small title */
+.home-circle p span {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    color: var(--clr-text);
+}
+
+/* Icon sits in a white badge */
+.home-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 0.85rem;
+    border-radius: 50%;
+    background: var(--clr-bg);
+    box-shadow: var(--shadow-sm);
+    font-size: 1.6rem;
+    color: var(--clr-primary);
+}
+
+/* Core circle: larger, white, brand ring, with a slowly rotating outer orbit */
+.home-circle-core {
+    z-index: 1;
+    width: clamp(260px, 31vw, 350px);
+    padding: 2.5rem 2.5rem;
+    background: var(--clr-bg);
+    border: 2px solid var(--clr-primary);
+    box-shadow: 0 12px 40px var(--shadow-glow-primary);
+}
+
+.home-circle-core::before {
+    border-color: rgba(253, 111, 0, 0.18);
+}
+
+.home-circle-core::after {
+    content: "";
+    position: absolute;
+    inset: -0.8rem;
+    border: 1px dashed var(--clr-primary);
+    border-radius: 50%;
+    opacity: 0.55;
+    pointer-events: none;
+    animation: home-orbit-spin 60s linear infinite;
+}
+
+.home-circle-core:hover {
+    box-shadow: 0 16px 48px var(--shadow-glow-primary);
+}
+
+.home-circle-core .home-icon {
+    background: var(--clr-primary);
+    color: #fff;
+}
+
+@keyframes home-orbit-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 800px) {
+    .home-venn {
+        flex-direction: column;
+    }
+
+    .home-circle {
+        width: min(290px, 80vw);
+        margin: -2.5rem 0 0;
+        padding: 2.5rem 2.75rem;
+    }
+
+    .home-circle:first-child {
+        margin-top: 0;
+    }
+
+    .home-circle-core {
+        width: min(320px, 86vw);
+    }
+}
+
+/* --- Metrics: numbered stat plates --- */
+.home-metrics {
+    counter-reset: metric;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--sp-md);
+    margin: 0 0 var(--sp-xl);
+}
+
+.home-metric {
+    counter-increment: metric;
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 0.6rem;
+    overflow: hidden;
+    padding: var(--sp-lg) var(--sp-lg) calc(var(--sp-lg) + 4px);
+    background: var(--clr-nav-bg);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    transition: transform 0.25s var(--easing-smooth),
+        box-shadow 0.25s var(--easing-smooth);
+}
+/* Brand bar along the bottom edge; grows to full width on hover */
+.home-metric::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    transform: scaleX(0.2);
+    transition: transform 0.4s var(--easing-smooth);
+}
+
+.home-metric:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.home-metric:hover::after {
+    transform: scaleX(1);
+}
+
+.home-metric dd {
+    position: relative;
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+    font-size: 3.25rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--clr-text);
+}
+
+/* Suffix (e.g. "+") hangs off the number in brand orange, so the number itself stays dead-centre. Hidden when empty */
+.home-metric-suffix {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-left: 0.05em;
+    font-size: 1em;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--clr-primary);
+}
+
+.home-metric-suffix:empty {
+    display: none;
+}
+
+.home-metric dt {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--clr-text-muted);
+}
+
+.home-metric dt::before {
+    content: "";
+    display: block;
+    width: 1.5rem;
+    height: 2px;
+    margin: 0 auto 0.5rem;
+    background: var(--clr-primary);
+}
+
+/* --- "Read the full story" — chapter-break link --- */
+.home-more {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-md);
+}
+
+.home-more::before,
+.home-more::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--clr-border);
+}
+
+.home-more-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--clr-text);
+    transition: color var(--transition);
+}
+
+/* Underline draws in from the left on hover */
+.home-more-link span {
+    padding-bottom: 0.15rem;
+    background: linear-gradient(var(--clr-primary), var(--clr-primary)) 0 100% / 0 2px no-repeat;
+    transition: background-size 0.3s var(--easing-smooth);
+}
+
+.home-more-link i {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--clr-primary);
+    border-radius: 50%;
+    font-size: 1.1rem;
+    color: var(--clr-primary);
+    transition: background var(--transition), color var(--transition),
+        transform 0.25s var(--easing-smooth);
+}
+
+.home-more-link:hover,
+.home-more-link:focus-visible {
+    color: var(--clr-primary);
+}
+
+.home-more-link:hover span,
+.home-more-link:focus-visible span {
+    background-size: 100% 2px;
+}
+
+.home-more-link:hover i,
+.home-more-link:focus-visible i {
+    background: var(--clr-primary);
+    color: #fff;
+    transform: translateX(4px);
+}
+
+.home-more-link:focus-visible {
+    outline: 2px solid var(--clr-primary);
+    outline-offset: 4px;
+    border-radius: var(--radius-pill);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .home-circle-core::after {
+        animation: none;
+    }
+
+    .home-circle,
+    .home-metric,
+    .home-metric::after,
+    .home-circle-core::after,
+    .home-more-link span,
+    .home-more-link i {
+        transition: none;
+    }
+
+    .home-circle:hover,
+    .home-metric:hover,
+    .home-more-link:hover i {
+        transform: none;
+    }
+}
 /* ===============RESPONSIVE==================== */
 @media (max-width: 768px) {
     .hero-visual {
@@ -263,30 +625,30 @@
         margin-top: var(--sp-lg);
     }
 
-    .hero-circle-bg { 
-        width: 240px; 
-        height: 240px; 
+    .hero-circle-bg {
+        width: 240px;
+        height: 240px;
     }
 
-    .hero-circle-top { 
-        width: 120px; 
-        height: 120px; 
+    .hero-circle-top {
+        width: 120px;
+        height: 120px;
     }
 
     .hero-circle-left,
-    .hero-circle-right { 
-        width: 130px; 
-        height: 130px; 
+    .hero-circle-right {
+        width: 130px;
+        height: 130px;
     }
 
-    .hero-photo { 
-        width: 170px; 
-        height: 170px; 
+    .hero-photo {
+        width: 170px;
+        height: 170px;
     }
 
     .home-marquee-layout {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
 }

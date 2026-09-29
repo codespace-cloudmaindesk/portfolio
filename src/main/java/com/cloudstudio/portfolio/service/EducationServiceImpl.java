@@ -31,4 +31,13 @@ public class EducationServiceImpl  implements EducationService{
             throw new DataLoadException("Failed to load education.json", e);
         }
     }
+
+    @Override
+    public Education getEducationByQualification(String qualification) {
+        return getAllEducation().stream()
+            .filter(education -> qualification.equals(education.getQualification()))
+            .findFirst()
+            .orElseThrow(() -> new DataLoadException("Education qualification not found: " + qualification)
+        );
+    }
 }

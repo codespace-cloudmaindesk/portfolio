@@ -1,59 +1,62 @@
-﻿/* home.js — KPI counter animation + skill bar animation */
+/* home.js — Metric counter animation */
 
 (function () {
   'use strict';
 
-  /* ── Utility: count-up animation ─────────────────────────── */
-  function countUp(el, target, suffix, duration) {
-    var start = 0;
-    var step = (target / duration) * 16;
-    var current = 0;
-    var timer = setInterval(function () {
-      current += step;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
+  /* ── Utility: easeOutExpo for a decelerating feel ──────── */
+  function easeOutExpo(t) {
+    return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+  }
+
+  /* ── Utility: count-up animation using rAF ─────────────── */
+  function countUp(el, target, duration) {
+    if (target === 0) {
+      el.textContent = '0';
+      return;
+    }
+
+    var start = performance.now();
+
+    function tick(now) {
+      var elapsed = now - start;
+      var progress = Math.min(elapsed / duration, 1);
+      var easedProgress = easeOutExpo(progress);
+      var current = Math.round(easedProgress * target);
+
+      el.textContent = current;
+
+      if (progress < 1) {
+        requestAnimationFrame(tick);
+      } else {
+        el.textContent = target;
       }
-      el.textContent = Math.round(current) + suffix;
-    }, 16);
+    }
+
+    requestAnimationFrame(tick);
   }
 
-  /* ── Utility: animate skill progress fills ────────────────── */
-  function animateSkills() {
-    document.querySelectorAll('.skill-progress-fill').forEach(function (fill) {
-      var width = fill.getAttribute('data-width') || '0%';
-      fill.style.width = width;
-    });
-  }
-
-  /* ── IntersectionObserver for KPI strip ──────────────────── */
-  var kpiObserver = new IntersectionObserver(function (entries) {
+  /* ── IntersectionObserver for home metrics ────────────────── */
+  var metricsObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.kpi-number').forEach(function (el) {
+        var countEls = entry.target.querySelectorAll('.js-count');
+        countEls.forEach(function (el) {
           var target = parseInt(el.getAttribute('data-target'), 10) || 0;
-          var suffix = el.getAttribute('data-suffix') || '';
-          countUp(el, target, suffix, 1200);
+          countUp(el, target, 1400);
         });
-        kpiObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-
-  var kpiStrip = document.querySelector('.kpi-strip');
-  if (kpiStrip) kpiObserver.observe(kpiStrip);
-
-  /* ── IntersectionObserver for skill bars ─────────────────── */
-  var skillObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        animateSkills();
-        skillObserver.unobserve(entry.target);
+        metricsObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.2 });
 
-  var skillsList = document.getElementById('skills-list');
-  if (skillsList) skillObserver.observe(skillsList);
+  var metricsSection = document.querySelector('.home-metrics');
+  if (metricsSection) {
+    metricsObserver.observe(metricsSection);
+  }
 
+  /* ── Also observe .kpi-grid for the standalone metrics page ─ */
+  var kpiGrid = document.querySelector('.kpi-grid');
+  if (kpiGrid) {
+    metricsObserver.observe(kpiGrid);
+  }
 })();
