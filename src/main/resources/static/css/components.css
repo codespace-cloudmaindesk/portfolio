@@ -197,8 +197,6 @@
     padding-bottom: var(--sp-xs);
     font-size: clamp(1.8rem, 3vw, 2.4rem);
     font-weight: 600;
-    background: var(--clr-primary);
-    background-clip: text;
     color: transparent;
 }
 

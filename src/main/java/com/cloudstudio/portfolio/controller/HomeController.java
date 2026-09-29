@@ -1,6 +1,11 @@
 package com.cloudstudio.portfolio.controller;
 
-import com.cloudstudio.portfolio.service.*;
+import com.cloudstudio.portfolio.service.AboutService;
+import com.cloudstudio.portfolio.service.SkillService;
+import com.cloudstudio.portfolio.service.EducationService;
+import com.cloudstudio.portfolio.service.MetricService;
+import com.cloudstudio.portfolio.service.RoleService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +33,7 @@ public class HomeController {
 
     @GetMapping
     public String viewHomePage(Model model) {
+
         model.addAttribute("roles", roleService.getAllRoles());
         model.addAttribute("about", aboutService.getAboutContent());
         model.addAttribute("allTools", skillService.getAllTools());

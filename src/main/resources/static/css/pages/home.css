@@ -422,7 +422,7 @@
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 960px) {
     .home-venn {
         flex-direction: column;
     }
@@ -507,7 +507,7 @@
     font-size: 1em;
     font-weight: 700;
     line-height: 1;
-    color: var(--clr-primary);
+    color: var(--clr-primary-text);
 }
 
 .home-metric-suffix:empty {
@@ -557,7 +557,9 @@
 /* Underline draws in from the left on hover */
 .home-more-link span {
     padding-bottom: 0.15rem;
-    background: linear-gradient(var(--clr-primary), var(--clr-primary)) 0 100% / 0 2px no-repeat;
+    background:
+            linear-gradient(var(--clr-primary),
+            var(--clr-primary)) 0 100% / 0 2px no-repeat;
     transition: background-size 0.3s var(--easing-smooth);
 }
 
