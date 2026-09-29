@@ -30,4 +30,13 @@ public class SkillServiceImpl implements SkillService {
             throw new DataLoadException("Failed to load skills.json", e);
         }
     }
+
+    @Override
+    public List<String> getAllTools() {
+        return getAllSkills().stream()
+                .filter(skill -> skill.getTools() != null)
+                .flatMap(skill -> skill.getTools().stream())
+                .distinct()
+                .toList();
+    }
 }

@@ -219,7 +219,7 @@
     transition:
         color 0.25s var(--easing-smooth),
         transform 0.25s var(--easing-smooth),
-        text-shadow 0.25s var(--easing-smooth),
+        text-shadow 0.25s var(--easing-smooth)
 }
 
 .home-marquee-group li:hover {
