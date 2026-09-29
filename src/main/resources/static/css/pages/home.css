@@ -507,7 +507,7 @@
     font-size: 1em;
     font-weight: 700;
     line-height: 1;
-    color: var(--clr-primary-text);
+    color: var(--clr-text);
 }
 
 .home-metric-suffix:empty {
