@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface SkillService {
    List<Skill> getAllSkills();
+   List<String> getAllTools();
 }
