@@ -15,23 +15,22 @@
 <div th:replace="~{fragments :: nav}"></div>
 
 <main>
-<div class="container section contact-grid split-grid">
-    <div class="contact-intro">
-        <h1 class="section-heading">Let's work Together</h1>
-        <p class="section-subtitle">
-            Have a project in mind, or just want to say hello? Fill out the form and I'll get back to you shortly.
-        </p>
-    </div>
-
-
-    <p class="form-status--success" th:if="${successMessage}" th:text="${successMessage}"></p>
-
-    <form class="contact-form" th:action="@{/contact}" th:object="${contactMessageDto}" method="post">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input id="name" type="text" th:field="*{name}" placeholder="Your full name" />
-            <p class="form-error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+    <div class="container section split-grid">
+        <div class="contact-intro">
+            <h1 class="section-heading">Let's work Together</h1>
+            <p class="section-subtitle">
+                Have a project in mind, or just want to say hello? Fill out the form and I'll get back to you shortly.
+            </p>
         </div>
+
+        <form class="contact-form" th:action="@{/contact}" th:object="${contactMessageDto}" method="post">
+            <p class="form-status--success" role="status" th:if="${successMessage}" th:text="${successMessage}"></p>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" type="text" th:field="*{name}" placeholder="Your full name" />
+                <p class="form-error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            </div>
 
         <div class="form-group">
             <label for="email">Email</label>
