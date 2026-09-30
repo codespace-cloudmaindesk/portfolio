@@ -1,0 +1,163 @@
+/* =========================================================
+   ABOUT PAGE
+   ========================================================= */
+
+/* --- About / content rows --- */
+
+.about-row {
+    display: grid;
+    gap: var(--sp-xl);
+    align-items: center;
+}
+
+
+/* --- Section headings --- */
+
+.about-heading {
+    margin-bottom: var(--sp-md);
+    padding-left: var(--sp-sm);
+    border-left: 3px solid var(--clr-primary);
+
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+
+/* --- About text --- */
+
+.about-text p {
+    margin-bottom: var(--sp-sm);
+    line-height: 1.75;
+    color: var(--clr-text-muted);
+}
+
+
+/* --- About images --- */
+
+.about-image-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image {
+    width: 100%;
+    max-width: 480px;
+    margin-inline: auto;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+}
+
+.about-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
+/* --- Core skills section --- */
+
+.skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-lg);       /* extra gap so the floating label doesn't overlap */
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+
+/* --- Floating percentage label ---
+   Sits inside .skill-progress and is absolutely positioned at
+   the tip of the fill bar.  JS updates `left` each frame so it
+   travels from 0 → target% in sync with the fill width. */
+
+.skill-progress {
+    position: relative;
+}
+
+.skill-progress .skill-pct {
+    position: absolute;
+    top: -1.6rem;
+    left: 0;                 /* JS overrides this on each frame */
+    transform: translateX(-50%);
+
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--clr-primary);
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+
+/* --- "View all skills" CTA link --- */
+
+.about-skills-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: var(--sp-md);
+
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--clr-primary);
+    transition: gap var(--transition), color var(--transition);
+}
+
+.about-skills-link:hover {
+    gap: 0.6rem;
+    color: var(--clr-text);
+}
+
+
+/* --- Desktop layout --- */
+
+@media (min-width: 960px) {
+
+    .about-row {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+/* --- Mobile layout --- */
+
+@media (max-width: 959px) {
+
+    .about-row {
+        gap: var(--sp-lg);
+    }
+
+    .about-image-column {
+        order: 2;
+    }
+
+    .about-text {
+        order: 1;
+    }
+
+    .about-row--reverse .about-image-column {
+        order: 1;
+    }
+
+    .about-row--reverse .about-text {
+        order: 2;
+    }
+
+}
+
+
+/* --- Reduced motion --- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .about-img {
+        transition: none;
+    }
+
+}

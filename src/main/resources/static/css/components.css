@@ -197,9 +197,7 @@
     padding-bottom: var(--sp-xs);
     font-size: clamp(1.8rem, 3vw, 2.4rem);
     font-weight: 600;
-    background: var(--clr-primary);
-    background-clip: text;
-    color: transparent;
+    color: var(--clr-primary);
 }
 
 .site-footer {
@@ -285,7 +283,6 @@
     padding: var(--sp-md) 0 var(--sp-lg);
     border-top: 1px solid var(--clr-border);
 }
-
 
 .footer-copy {
     font-size: 0.85rem;
