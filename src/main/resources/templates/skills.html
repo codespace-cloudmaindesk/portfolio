@@ -16,12 +16,12 @@
 <main>
 <div class="container section">
     <h2 class="section-heading">Skills</h2>
-    <ul class="skills-list">
+    <ul class="skills-list" id="skills-list">
         <li th:each="skill : ${skills}">
             <span class="skill-title" th:text="${skill.name}"></span>
-            <span class="skill-pct" th:text="${skill.level} + '%'"></span>
+            <span class="skill-pct" th:text="${skill.level} + '%'" th:data-target="${skill.level}"></span>
             <div class="skill-progress">
-                <div class="skill-progress-fill" th:style="'width: ' + ${skill.level} + '%;'"></div>
+                <div class="skill-progress-fill" th:data-width="${skill.level}"></div>
             </div>
         </li>
     </ul> 
@@ -29,6 +29,8 @@
 </main>
 
 <div th:replace="~{fragments :: footer}"></div>
+
+<script th:src="@{/js/pages/skills-progress.js}"></script>
 
 
 </body>
