@@ -1,6 +1,7 @@
 (function () {
   'use strict';
 
+  /* ── Configuration ── */
   var CONFIG = {
     selector:  '.js-count',
     duration:  1400,
@@ -61,4 +62,5 @@
   }
 
   init();
+
 })();
