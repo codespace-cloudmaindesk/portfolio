@@ -97,7 +97,7 @@
     top: -10px;
     left: 50%;
     transform: translateX(-50%);
-    background: #f5b942;
+    background: var(--clr-accent-gold);
     z-index: 1;
 }
 
@@ -106,7 +106,7 @@
     height: 170px;
     bottom: 40px;
     left: 10px;
-    background: #7d9c8f;
+    background: var(--clr-accent-sage);
     z-index: 1;
 }
 
@@ -115,7 +115,7 @@
     height: 170px;
     bottom: 40px;
     right: 10px;
-    background: #3f5e56;
+    background: var(--clr-accent-forest);
     z-index: 1;
 }
 

@@ -4,17 +4,23 @@
 
     --clr-primary: #fd6f00;
     --clr-primary-dark: #e85f00;
-    --clr-text: #333;
     --clr-primary-text: #c25400;
+
+    --clr-accent-gold: #f5b942;
+    --clr-accent-sage: #7d9c8f;
+    --clr-accent-forest: #3f5e56;
+
+    --clr-text: #3335;
     --clr-text-muted: #555;
     --clr-text-subtle: #6b6b6b;
     --clr-bg: #fff;
     --clr-border: #e8e8e8;
     --clr-nav-bg: rgba(255, 255, 255, 0.95);
     --gradient-primary: linear-gradient(270deg, #df8908 10%, #ff1d15 100%);
+    --gradient-primary-strong: linear-gradient(270deg, #c25400 10%, #d32f2f 100%);
 
-    --sucess-msg-clr: #2f9e44;
-    --error-msg-clr:#ff1d12;
+    --sucess-msg-clr: #237a35;
+    --error-msg-clr:#d32f2f;
     --warning-msg-clr:#ffc107;
     --info-msg-clr:#29b6f6;
 
