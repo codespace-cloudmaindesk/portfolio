@@ -14,12 +14,20 @@ body {
     width: 100%;
     z-index: 1000;
     background: var(--clr-nav-bg);
-    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--clr-border);
     transition:
             box-shadow var(--transition),
             background var(--transition),
             border-color var(--transition);
+}
+
+.main-nav::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    backdrop-filter: blur(12px);
+    pointer-events: none;
 }
 
 .main-nav.scrolled {

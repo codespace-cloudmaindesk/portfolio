@@ -3,6 +3,13 @@
     var toggle;
     var menu;
     var overlay;
+    var nav;
+
+    var SCROLL_THRESHOLD = 10;
+
+    function updateScrolledState() {
+        nav.classList.toggle('scrolled', window.scrollY > SCROLL_THRESHOLD);
+    }
 
     function openMenu() {
         menu.classList.add('active');
@@ -58,6 +65,10 @@
 
         menu.querySelectorAll('a').forEach(bindLinkClose);
         document.addEventListener('click', onDocClick);
+
+        nav = document.querySelector('.main-nav');
+        window.addEventListener('scroll', updateScrolledState, { passive: true });
+        updateScrolledState();
     }
 
     // Script is embedded inside the nav fragment — DOM is already ready, init immediately.

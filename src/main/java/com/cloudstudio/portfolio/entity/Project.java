@@ -28,10 +28,10 @@ public class Project {
     @Column(name = "short_description")
     private String shortDescription;
 
-    @Column(name = "problem")
+    @Column(name = "problem", columnDefinition = "TEXT")
     private String problem;
 
-    @Column(name = "solution")
+    @Column(name = "solution", columnDefinition = "TEXT")
     private String solution;
 
     @ElementCollection
