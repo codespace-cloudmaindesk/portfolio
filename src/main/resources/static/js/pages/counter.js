@@ -48,11 +48,16 @@
 
   /* ── Setup: only runs when animating is appropriate ── */
   function init() {
-    if (reduceMotion || !('IntersectionObserver' in window)) return;
 
     var counters = document.querySelectorAll(CONFIG.selector);
-    if (counters.length === 0) return;
+    if (counters.length === 0) return
 
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      counters.forEach(function (el) {
+        el.textContent = getTarget(el);
+      });
+      return;
+    }
     var observer = new IntersectionObserver(onIntersect, { threshold: CONFIG.threshold });
 
     counters.forEach(function (el) {
@@ -63,4 +68,4 @@
 
   init();
 
-})();
+})
