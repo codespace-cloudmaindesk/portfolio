@@ -322,7 +322,7 @@ body {
         gap: var(--sp-sm);
         padding: 0.75rem var(--sp-md);
         border-radius: var(--radius-pill);
-        background: var(--gradient-primary);
+        background: var(--gradient-primary-strong);
         color: #fff !important;
         font-size: 0.9rem;
         font-weight: 600;
