@@ -10,6 +10,7 @@ public class AboutServiceImpl implements AboutService {
     private final JsonContentLoader contentLoader;
 
     public AboutServiceImpl(JsonContentLoader contentLoader) {
+
         this.contentLoader = contentLoader;
     }
 
