@@ -3,6 +3,10 @@
     margin-inline: auto;
 }
 
+body {
+    padding-top: var(--nav-height);
+}
+
 .main-nav {
     position: fixed;
     top: 0;
@@ -131,12 +135,13 @@
 
 @media (max-width: 768px) {
 
-    body {
-        padding-top: var(--nav-height);
+    .desktop-nav {
+        display: none;
     }
 
-    .desktop-nav { display: none; }
-    .nav-menu .nav-links { display: flex; }
+    .nav-menu .nav-links {
+        display: flex;
+    }
 
     .nav-toggle {
         display: flex;
