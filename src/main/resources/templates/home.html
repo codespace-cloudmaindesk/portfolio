@@ -99,7 +99,8 @@
             <div class="home-metric" th:each="metric : ${metrics}">
                 <dt th:text="${metric.label}">Label</dt>
                 <dd>
-                    <span class="js-count" th:data-target="${metric.target}">0</span><span class="home-metric-suffix" th:text="${metric.suffix}"></span>
+                    <span class="js-count" th:data-target="${metric.target}" th:text="${metric.target}">0</span>
+                    <span class="home-metric-suffix" th:text="${metric.suffix}"></span>
                 </dd>
             </div>
         </dl>

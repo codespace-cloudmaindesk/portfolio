@@ -1,34 +1,23 @@
 package com.cloudstudio.portfolio.service;
 
-import com.cloudstudio.portfolio.exception.DataLoadException;
+import com.cloudstudio.portfolio.content.JsonContentLoader;
 import com.cloudstudio.portfolio.model.Experience;
 import com.cloudstudio.portfolio.model.ExperienceResponse;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
-import tools.jackson.databind.json.JsonMapper;
 
-import java.io.IOException;
 import java.util.List;
 
 @Service
 public class ExperienceServiceImpl implements ExperienceService{
 
-    private final JsonMapper jsonMapper;
+    private final JsonContentLoader contentLoader;
 
-    public ExperienceServiceImpl(JsonMapper jsonMapper) {
-        this.jsonMapper = jsonMapper;
+    public ExperienceServiceImpl(JsonContentLoader contentLoader) {
+        this.contentLoader = contentLoader;
     }
 
     @Override
     public List<Experience> getAllExperience() {
-        try {
-            ExperienceResponse response = jsonMapper.readValue(
-                    new ClassPathResource("data/experience.json").getInputStream(),
-                    ExperienceResponse.class
-            );
-            return response.getExperience();
-        } catch (IOException e) {
-            throw new DataLoadException("Failed to load experience.json", e);
-        }
+        return contentLoader.load("experience.json", ExperienceResponse.class).getExperience();
     }
 }

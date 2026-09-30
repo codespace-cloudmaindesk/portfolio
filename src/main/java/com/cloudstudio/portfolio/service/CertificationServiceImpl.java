@@ -1,5 +1,6 @@
 package com.cloudstudio.portfolio.service;
 
+import com.cloudstudio.portfolio.content.JsonContentLoader;
 import com.cloudstudio.portfolio.exception.DataLoadException;
 import com.cloudstudio.portfolio.model.Certification;
 import com.cloudstudio.portfolio.model.CertificationResponse;
@@ -13,22 +14,15 @@ import java.util.List;
 @Service
 public class CertificationServiceImpl implements CertificationService{
 
-    private final JsonMapper jsonMapper;
+    private final JsonContentLoader contentLoader;
 
-    public CertificationServiceImpl(JsonMapper jsonMapper) {
-        this.jsonMapper = jsonMapper;
+    public CertificationServiceImpl(JsonContentLoader contentLoader) {
+        this.contentLoader = contentLoader;
     }
 
     @Override
     public List<Certification> getAllCertification() {
-        try {
-            CertificationResponse response = jsonMapper.readValue(
-                    new ClassPathResource("data/certifications.json").getInputStream(),
-                    CertificationResponse.class
-            );
-            return response.getCertifications();
-        } catch (IOException e) {
-            throw new DataLoadException("Failed to load certifications.json", e);
-        }
+        return contentLoader.load("certifications.json", CertificationResponse.class)
+                .getCertifications();
     }
 }
