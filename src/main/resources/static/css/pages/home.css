@@ -164,7 +164,7 @@
     line-height: 1.2;
     color: var(--clr-text);
     white-space: nowrap;
-    border-left: 3px solid var(--clr-primary);
+    border-left: 3px solid var(--clr-primary-text);
     padding-left: var(--sp-sm);
 }
 
